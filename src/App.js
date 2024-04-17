@@ -6,21 +6,23 @@
  */
 
 import React, { useEffect } from 'react';
-import {
-  SafeAreaView
-} from 'react-native';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import reduxStore from './redux/Store';
+import RootContainer from './modules/RootContainer';
 import SplashScreen from 'react-native-splash-screen';
 
-
-function App() {
-
+const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
   return (
-    <SafeAreaView>
-    </SafeAreaView>
+    <Provider store={reduxStore.store}>
+      <PersistGate loading={null} persistor={reduxStore.persistor}>
+        <RootContainer />
+      </PersistGate>
+    </Provider>
   );
 }
 
