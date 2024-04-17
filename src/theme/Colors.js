@@ -19,5 +19,8 @@ const colors = {
   lightblack: '#00000090',
   filterTopCategory: '#F2F2F2',
   filterSep: '#E7E7E7',
+  textDark: '#333333',
+  lightGray: '#BFC1C4',
+
 };
 export default colors;
