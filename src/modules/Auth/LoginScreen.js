@@ -12,11 +12,13 @@ import {
 import appConstants from '../../constants/AppConsts';
 import strings from '../../constants/Strings';
 import styles from './styles/LoginScreenStyles';
+import { AuthContext } from '../../navigation/AppNavigation';
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('brijesh@yopmail.com');
+  const [password, setPassword] = useState('123456');
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const { setIsSignIn } = React.useContext(AuthContext);
 
 
   const onLoginPress = () => {
@@ -26,6 +28,7 @@ const LoginScreen = ({ navigation }) => {
       Alert.alert(strings.thermonic, strings.invalidPassword);
     } else {
       Keyboard.dismiss();
+      setIsSignIn(true)
     }
   };
 

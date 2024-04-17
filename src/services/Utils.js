@@ -25,3 +25,10 @@ export async function getError(response) {
   return 'Something went wrong';
 }
 
+export const UserType = {
+  customer: 'customer',
+  technical: 'technical',
+  manager: 'manager',
+  production: 'production'
+}
+
