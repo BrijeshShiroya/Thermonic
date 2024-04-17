@@ -1,6 +1,7 @@
 const type = {
   bold: 'Poppins-Bold',
   regular: 'Poppins-Regular',
+  semiBold: 'Poppins-SemiBold',
 };
 
 const size = {

@@ -3,10 +3,10 @@ import {
   Alert,
   Keyboard,
   ScrollView,
-  Text,
   View
 } from 'react-native';
 import {
+  CustomButton,
   CustomTextInput,
 } from '../../components';
 import appConstants from '../../constants/AppConsts';
@@ -21,9 +21,9 @@ const LoginScreen = ({ navigation }) => {
 
   const onLoginPress = () => {
     if (appConstants.email_reg.test(email?.trim()) === false) {
-      Alert.alert(strings.writeWay, strings.invalidEmail);
+      Alert.alert(strings.thermonic, strings.invalidEmail);
     } else if (password?.trim() === '') {
-      Alert.alert(strings.writeWay, strings.invalidPassword);
+      Alert.alert(strings.thermonic, strings.invalidPassword);
     } else {
       Keyboard.dismiss();
     }
@@ -47,6 +47,11 @@ const LoginScreen = ({ navigation }) => {
             containerStyle={styles.passwordContainer}
             onChangeText={text => setPassword(text)}
             onLeftPress={() => setSecureTextEntry(!secureTextEntry)}
+          />
+          <CustomButton
+            title={strings.loginButton}
+            style={styles.loginButton}
+            onPress={onLoginPress}
           />
         </ScrollView>
       </View>

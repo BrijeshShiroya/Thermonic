@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   loginButton: {
-    marginTop: verticalScale(60),
+    marginTop: verticalScale(30),
     width: '100%',
   }
 });

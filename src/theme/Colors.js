@@ -21,6 +21,8 @@ const colors = {
   filterSep: '#E7E7E7',
   textDark: '#333333',
   lightGray: '#BFC1C4',
-
+  error: '#E00932',
+  themeBlue: '#006E96',
+  themeBlueDisable: '#BFC1C4',
 };
 export default colors;

@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 
 const strings = {
-  writeWay: 'WriteWay',
+  thermonic: 'Thermonic',
   brands: 'Brands',
   category: 'Category',
   search: 'Search',
