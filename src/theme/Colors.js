@@ -1,0 +1,23 @@
+const colors = {
+  transparent: 'rgba(0,0,0,0)',
+  themeBlack: 'black',
+  themeRed: '#FB0013',
+  themeGrey: '#898C93',
+  themeRedDisable: '#FB001350',
+  white: 'white',
+  lightWhite: '#FFFFFF50',
+  black: 'black',
+  grey: 'grey',
+  orange: 'orange',
+  red: 'red',
+  tabSelected: '#F54552',
+  separator: '#FF0020',
+  itemSeparator: '#E5E3E3',
+  green: '#008000',
+  lightGreen: '#00800030',
+  lightRed: '#FB001330',
+  lightblack: '#00000090',
+  filterTopCategory: '#F2F2F2',
+  filterSep: '#E7E7E7',
+};
+export default colors;
