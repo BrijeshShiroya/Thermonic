@@ -10,9 +10,9 @@ const sagaMiddleware = createSagaMiddleware();
 const middleWare = [sagaMiddleware];
 
 const persistConfig = {
-  key: '@writeway',
+  key: '@thermonic',
   storage: AsyncStorage,
-  blacklist: ['nav', 'home', 'product'],
+  blacklist: ['nav',],
   transforms: [immutablePersistenceTransform],
 };
 

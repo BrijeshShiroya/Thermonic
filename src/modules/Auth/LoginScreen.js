@@ -8,17 +8,21 @@ import {
 import {
   CustomButton,
   CustomTextInput,
+  Loader,
 } from '../../components';
 import appConstants from '../../constants/AppConsts';
 import strings from '../../constants/Strings';
 import styles from './styles/LoginScreenStyles';
-import { AuthContext } from '../../navigation/AppNavigation';
+import { useDispatch, useSelector } from 'react-redux';
+import AuthTypes from '../../redux/AuthRedux';
 
 const LoginScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('brijesh@yopmail.com');
   const [password, setPassword] = useState('123456');
-  const [secureTextEntry, setSecureTextEntry] = useState(true);
-  const { setIsSignIn } = React.useContext(AuthContext);
+  const [secureTextEntry, setSecureTextEntry] = useState(true)
+  const { user, error, fetching } = useSelector(state => state.auth);
+  ;
 
 
   const onLoginPress = () => {
@@ -28,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
       Alert.alert(strings.thermonic, strings.invalidPassword);
     } else {
       Keyboard.dismiss();
-      setIsSignIn(true)
+      dispatch(AuthTypes.authRequest(email.toLocaleLowerCase(), password));
     }
   };
 
@@ -58,6 +62,7 @@ const LoginScreen = ({ navigation }) => {
           />
         </ScrollView>
       </View>
+      {fetching && <Loader />}
     </View>
   );
 };

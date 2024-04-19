@@ -2,11 +2,14 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import styles from './styles/TechnicalProfileScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader } from '../../components';
+import { AuthContext } from '../../navigation/AppNavigation';
+import { useDispatch } from 'react-redux';
 
 const TechnicalProfileScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
 
     const onLogoutPress = () => {
-
+        dispatch({ type: 'LOGOUT' })
     }
 
     return (

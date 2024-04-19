@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { UserType } from '../services/Utils'
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -18,6 +18,7 @@ import ProductionProfileScreen from '../modules/Production/ProductionProfileScre
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 import icons from '../assets';
+import { useSelector } from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -147,14 +148,14 @@ const ProductionTabBar = () => {
 export const AuthContext = React.createContext(null);
 
 const RootStackScreen = (props, ref) => {
-  const [isSignIn, setIsSignIn] = useState(false)
-  const [currentUserRole, setCurrentUserRole] = useState(UserType.technical)
+  const { user } = useSelector(state => state.auth);
+  const [authUser, setAuthUser] = useState(user)
 
-  const userData = {
-    isSignIn,
-    setIsSignIn,
-    setCurrentUserRole
-  }
+  useEffect(() => {
+    setAuthUser(user)
+  }, [user])
+
+  const [currentUserRole, setCurrentUserRole] = useState(UserType.technical)
 
   const loggedInUserRole = () => {
     if (currentUserRole == UserType.customer) {
@@ -171,14 +172,12 @@ const RootStackScreen = (props, ref) => {
   return (
     <SafeAreaProvider>
       <NavigationContainer ref={ref}>
-        <AuthContext.Provider value={userData}>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {
-              !isSignIn ? <Stack.Screen name="Login" component={LoginScreen} /> :
-                loggedInUserRole()
-            }
-          </Stack.Navigator>
-        </AuthContext.Provider>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {
+            !authUser ? <Stack.Screen name="Login" component={LoginScreen} /> :
+              loggedInUserRole()
+          }
+        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );

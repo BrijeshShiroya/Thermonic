@@ -6,9 +6,6 @@ const { Types, Creators } = createActions({
   authRequest: ['email', 'password'],
   authSuccess: ['data'],
   authFailure: ['error'],
-  registerRequest: ['email', 'firstname', 'lastname', 'mobile', 'password'],
-  orderRequest: [],
-  orderSuccess: ['data'],
 });
 
 export const AuthTypes = Types;
@@ -19,7 +16,6 @@ export const INITIAL_STATE = Immutable({
   fetching: false,
   error: null,
   user: null,
-  orderList: null,
 });
 
 /* ------------- Selectors ------------- */
@@ -30,7 +26,7 @@ export const AuthSelectors = {
 /* ------------- Reducers ------------- */
 // request the data from an api
 export const request = state =>
-  state.merge({ fetching: true, error: null, orderList: null });
+  state.merge({ fetching: true, error: null });
 
 // successful api lookup
 export const success = (state, action) => {
@@ -39,15 +35,6 @@ export const success = (state, action) => {
     fetching: false,
     error: false,
     user: data,
-  });
-};
-
-export const successOrders = (state, action) => {
-  const { data } = action;
-  return state.merge({
-    fetching: false,
-    error: false,
-    orderList: data,
   });
 };
 
@@ -62,8 +49,5 @@ export const failure = (state, action) => {
 export const authReducer = createReducer(INITIAL_STATE, {
   [Types.AUTH_REQUEST]: request,
   [Types.AUTH_SUCCESS]: success,
-  [Types.ORDER_REQUEST]: request,
-  [Types.ORDER_SUCCESS]: successOrders,
   [Types.AUTH_FAILURE]: failure,
-  [Types.REGISTER_REQUEST]: request,
 });
