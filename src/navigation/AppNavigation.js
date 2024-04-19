@@ -148,7 +148,7 @@ export const AuthContext = React.createContext(null);
 
 const RootStackScreen = (props, ref) => {
   const [isSignIn, setIsSignIn] = useState(false)
-  const [currentUserRole, setCurrentUserRole] = useState(UserType.customer)
+  const [currentUserRole, setCurrentUserRole] = useState(UserType.technical)
 
   const userData = {
     isSignIn,

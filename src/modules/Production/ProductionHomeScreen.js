@@ -1,11 +1,15 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import styles from './styles/ProductionHomeScreenStyles';
+import { CustomHeader, CustomBackground } from '../../components';
 
 const ProductionHomeScreen = ({ navigation }) => {
     return (
         <View style={styles.mainContainer}>
-            <Text>Production Home</Text>
+            <CustomHeader />
+            <CustomBackground>
+                <Text>Production Home</Text>
+            </CustomBackground>
         </View>
     );
 };

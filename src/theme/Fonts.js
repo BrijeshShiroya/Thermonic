@@ -1,4 +1,5 @@
 const type = {
+  base: 'Poppins-Regular',
   bold: 'Poppins-Bold',
   regular: 'Poppins-Regular',
   semiBold: 'Poppins-SemiBold',
