@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: verticalScale(8),
         paddingHorizontal: verticalScale(16),
+    },
+    logoutButton: {
+        marginTop: verticalScale(30),
+        width: '100%',
     }
 });
 
