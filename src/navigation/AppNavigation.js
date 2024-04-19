@@ -16,12 +16,11 @@ import ProductionHomeScreen from '../modules/Production/ProductionHomeScreen';
 import ProductionProfileScreen from '../modules/Production/ProductionProfileScreen';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { Image } from 'react-native';
+import icons from '../assets';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
-
 
 const CustomerHomeStack = () => {
   return (
@@ -63,6 +62,10 @@ const CustomerTabBar = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => {
+          const { icon } = iconStyle(route.name, focused);
+          return <Image source={icon} resizeMode={'contain'} />;
+        },
       })}>
       <Tab.Screen name="CustomerHomeStack" component={CustomerHomeStack} />
       <Tab.Screen name="CustomerProfileStack" component={CustomerProfileScreen} />
@@ -76,6 +79,10 @@ const ManagerTabBar = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => {
+          const { icon } = iconStyle(route.name, focused);
+          return <Image source={icon} resizeMode={'contain'} />;
+        },
       })}>
       <Tab.Screen name="ManagerHomeStack" component={ManagerHomeStack} />
       <Tab.Screen name="ManagerProfileStack" component={ManagerProfileScreen} />
@@ -89,11 +96,34 @@ const TechnicalTabBar = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => {
+          const { icon } = iconStyle(route.name, focused);
+          return <Image source={icon} resizeMode={'contain'} />;
+        },
       })}>
       <Tab.Screen name="TechnicalHomeStack" component={TechnicalHomeStack} />
       <Tab.Screen name="TechnicalProfileStack" component={TechnicalProfileScreen} />
     </Tab.Navigator>
   );
+};
+
+const iconStyle = (screenName, focused) => {
+  let iconName;
+  if (screenName === 'CustomerHomeStack' ||
+    screenName === 'ManagerHomeStack' ||
+    screenName === 'TechnicalHomeStack' ||
+    screenName === 'ProductionHomeStack') {
+    iconName = focused ? icons.homeSelected : icons.homeUnselected;
+
+  } else if (screenName === 'CustomerProfileStack' ||
+    screenName === 'ManagerProfileStack' |
+    screenName === 'TechnicalProfileStack' ||
+    screenName === 'ProductionProfileStack') {
+    iconName = focused ? icons.profileSelected : icons.profileUnselected;
+  }
+  return {
+    icon: iconName,
+  };
 };
 
 const ProductionTabBar = () => {
@@ -102,6 +132,10 @@ const ProductionTabBar = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => {
+          const { icon } = iconStyle(route.name, focused);
+          return <Image source={icon} resizeMode={'contain'} />;
+        },
       })}>
       <Tab.Screen name="ProductionHomeStack" component={ProductionHomeStack} />
       <Tab.Screen name="ProductionProfileStack" component={ProductionProfileScreen} />
@@ -114,7 +148,7 @@ export const AuthContext = React.createContext(null);
 
 const RootStackScreen = (props, ref) => {
   const [isSignIn, setIsSignIn] = useState(false)
-  const [currentUserRole, setCurrentUserRole] = useState(UserType.production)
+  const [currentUserRole, setCurrentUserRole] = useState(UserType.customer)
 
   const userData = {
     isSignIn,
