@@ -155,7 +155,7 @@ const RootStackScreen = (props, ref) => {
     setAuthUser(user)
   }, [user])
 
-  const [currentUserRole, setCurrentUserRole] = useState(UserType.technical)
+  const [currentUserRole, setCurrentUserRole] = useState(UserType.production)
 
   const loggedInUserRole = () => {
     if (currentUserRole == UserType.customer) {

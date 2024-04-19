@@ -21,8 +21,7 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('brijesh@yopmail.com');
   const [password, setPassword] = useState('123456');
   const [secureTextEntry, setSecureTextEntry] = useState(true)
-  const { user, error, fetching } = useSelector(state => state.auth);
-  ;
+  const { fetching } = useSelector(state => state.auth);
 
 
   const onLoginPress = () => {
