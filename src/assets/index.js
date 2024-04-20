@@ -9,6 +9,9 @@ const icons = {
     filter: require('./filter.png'),
     add: require('./add.png'),
     back: require('./back.png'),
+    settingsSelected: require('./settingsSelected.png'),
+    settingsUnselected: require('./settingsUnselected.png'),
+    next: require('./next.png'),
 };
 
 export default icons;

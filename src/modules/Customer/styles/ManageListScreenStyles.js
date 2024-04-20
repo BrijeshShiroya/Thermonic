@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import {
     ApplicationStyles,
+    scale,
     verticalScale
 } from '../../../theme';
 
@@ -13,6 +14,8 @@ const styles = StyleSheet.create({
     },
     innerContainer: {
         flex: 1,
+        marginTop: verticalScale(20),
+        marginHorizontal: scale(20)
     },
     field: {
         marginBottom: verticalScale(10)

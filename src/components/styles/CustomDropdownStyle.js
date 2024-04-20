@@ -4,7 +4,7 @@ import { Colors, Fonts, verticalScale } from '../../theme';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 60,
+        marginTop: 100,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         padding: 20,

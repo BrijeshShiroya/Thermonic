@@ -19,6 +19,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 import icons from '../assets';
 import { useSelector } from 'react-redux';
+import ManageListScreen from '../modules/Customer/ManageListScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -44,6 +45,14 @@ const TechnicalHomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="TechnicalHomeScreen" component={TechnicalHomeScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const ManageStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ManageListScreen" component={ManageListScreen} />
     </Stack.Navigator>
   );
 };
@@ -104,6 +113,7 @@ const TechnicalTabBar = () => {
         },
       })}>
       <Tab.Screen name="TechnicalHomeStack" component={TechnicalHomeStack} />
+      <Tab.Screen name="ManageStack" component={ManageStack} />
       <Tab.Screen name="TechnicalProfileStack" component={TechnicalProfileScreen} />
     </Tab.Navigator>
   );
@@ -122,6 +132,8 @@ const iconStyle = (screenName, focused) => {
     screenName === 'TechnicalProfileStack' ||
     screenName === 'ProductionProfileStack') {
     iconName = focused ? icons.profileSelected : icons.profileUnselected;
+  } else if (screenName === 'ManageStack') {
+    iconName = focused ? icons.settingsSelected : icons.settingsUnselected;
   }
   return {
     icon: iconName,
@@ -156,7 +168,7 @@ const RootStackScreen = (props, ref) => {
     setAuthUser(user)
   }, [user])
 
-  const [currentUserRole, setCurrentUserRole] = useState(UserType.customer)
+  const [currentUserRole, setCurrentUserRole] = useState(UserType.technical)
 
   const loggedInUserRole = () => {
     if (currentUserRole == UserType.customer) {
