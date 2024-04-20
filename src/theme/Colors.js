@@ -24,5 +24,6 @@ const colors = {
   error: '#E00932',
   themeBlue: '#006E96',
   themeBlueDisable: '#BFC1C4',
+  darkGray: '#9A9A9A'
 };
 export default colors;
