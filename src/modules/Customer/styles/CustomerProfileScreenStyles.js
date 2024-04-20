@@ -7,9 +7,19 @@ import {
 const styles = StyleSheet.create({
     ...ApplicationStyles.screen,
     container: {
-        flex: 1,
-        paddingTop: verticalScale(8),
+        paddingTop: verticalScale(20),
         paddingHorizontal: verticalScale(16),
+        justifyContent: 'center'
+    },
+    innerContainer: {
+        flex: 1,
+    },
+    field: {
+        marginBottom: verticalScale(10)
+    },
+    logoutButton: {
+        marginVertical: verticalScale(30),
+        marginHorizontal: verticalScale(16),
     }
 });
 

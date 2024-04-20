@@ -6,6 +6,8 @@ import CustomSearchbar from './CustomSearchbar';
 import Loader from './Loader';
 import CustomerOrder from './CustomerOrder'
 import Status from './Status'
+import ProfileField from './ProfileField'
+
 
 export {
     CustomTextInput,
@@ -15,5 +17,6 @@ export {
     CustomSearchbar,
     Loader,
     CustomerOrder,
-    Status
+    Status,
+    ProfileField
 }
