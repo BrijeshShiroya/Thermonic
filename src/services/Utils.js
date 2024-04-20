@@ -32,3 +32,7 @@ export const UserType = {
   production: 'production'
 }
 
+export const CustomerOrderStatus = {
+  accepted: "Accepted",
+  dispatched: "Dispatched"
+}

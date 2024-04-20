@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     },
     centerTextStyle: {
         fontSize: Fonts.size.tiny,
-        fontFamily: Fonts.type.regular
+        fontFamily: Fonts.type.regular,
+        color: Colors.textDark
     }
 });
 

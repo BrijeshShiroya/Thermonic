@@ -4,6 +4,8 @@ import CustomHeader from './CustomHeader';
 import CustomBackground from './CustomBackground';
 import CustomSearchbar from './CustomSearchbar';
 import Loader from './Loader';
+import CustomerOrder from './CustomerOrder'
+import Status from './Status'
 
 export {
     CustomTextInput,
@@ -12,4 +14,6 @@ export {
     CustomBackground,
     CustomSearchbar,
     Loader,
+    CustomerOrder,
+    Status
 }
