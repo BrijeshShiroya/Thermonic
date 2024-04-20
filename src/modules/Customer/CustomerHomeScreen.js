@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import styles from './styles/CustomerHomeScreenStyles';
 import { CustomBackground, CustomHeader, CustomSearchbar, CustomerOrder } from '../../components';
 import { CustomerOrderStatus } from '../../services/Utils';
@@ -73,7 +73,7 @@ const CustomerHomeScreen = ({ navigation }) => {
     ];
 
     const onAddOrderPress = () => {
-        alert('OnAdd press')
+        navigation.navigate('AddCustomerOrderScreen')
     }
 
     return (

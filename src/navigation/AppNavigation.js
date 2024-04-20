@@ -8,13 +8,13 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import LoginScreen from '../modules/Auth/LoginScreen';
 import CustomerHomeScreen from '../modules/Customer/CustomerHomeScreen';
 import CustomerProfileScreen from '../modules/Customer/CustomerProfileScreen';
+import AddCustomerOrderScreen from '../modules/Customer/AddCustomerOrderScreen';
 import ManagerHomeScreen from '../modules/Manager/ManagerHomeScreen';
 import ManagerProfileScreen from '../modules/Manager/ManagerProfileScreen';
 import TechnicalHomeScreen from '../modules/Technical/TechnicalHomeScreen';
 import TechnicalProfileScreen from '../modules/Technical/TechnicalProfileScreen';
 import ProductionHomeScreen from '../modules/Production/ProductionHomeScreen';
 import ProductionProfileScreen from '../modules/Production/ProductionProfileScreen';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 import icons from '../assets';
@@ -27,6 +27,7 @@ const CustomerHomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="CustomerHomeScreen" component={CustomerHomeScreen} />
+      <Stack.Screen name="AddCustomerOrderScreen" component={AddCustomerOrderScreen} />
     </Stack.Navigator>
   );
 };
