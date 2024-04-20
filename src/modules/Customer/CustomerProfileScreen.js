@@ -1,14 +1,22 @@
 import React from 'react';
-import { View } from 'react-native';
-import styles from './styles/CustomerProfileScreenStyles';
-import { CustomBackground, CustomHeader, CustomButton, ProfileField } from '../../components';
+import { Alert, View } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
+import strings from '../../constants/Strings';
+import styles from './styles/CustomerProfileScreenStyles';
 
 const CustomerProfileScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
     const onLogoutPress = () => {
-        dispatch({ type: 'LOGOUT' })
+        Alert.alert(strings.thermonic, strings.logoutConfirmation, [
+            { text: strings.cancel, style: 'cancel' },
+            {
+                text: strings.logout,
+                style: 'destructive',
+                onPress: () => dispatch({ type: 'LOGOUT' }),
+            },
+        ]);
     }
     return (
         <View style={styles.mainContainer}>

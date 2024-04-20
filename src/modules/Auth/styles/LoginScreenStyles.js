@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 import {
   ApplicationStyles,
-  verticalScale
+  verticalScale,
+  Colors,
+  Fonts
 } from '../../../theme';
 
 const styles = StyleSheet.create({
@@ -14,7 +16,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     paddingBottom: 10,
     flexGrow: 1,
-    alignItems: 'center',
     justifyContent: 'center'
   },
   emailContainer: {
@@ -23,6 +24,13 @@ const styles = StyleSheet.create({
   loginButton: {
     marginTop: verticalScale(30),
     width: '100%',
+  },
+  placeholder: {
+    marginLeft: 5,
+    fontFamily: Fonts.type.semiBold,
+    color: Colors.textDark,
+    fontSize: Fonts.size.medium,
+    alignSelf: 'flex-start',
   }
 });
 

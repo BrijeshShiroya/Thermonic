@@ -3,6 +3,7 @@ import {
   Alert,
   Keyboard,
   ScrollView,
+  Text,
   View
 } from 'react-native';
 import {
@@ -39,6 +40,7 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.mainContainer}>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <Text style={styles.placeholder}>{strings.email}</Text>
           <CustomTextInput
             value={email}
             placeholder={strings.email}
@@ -46,6 +48,7 @@ const LoginScreen = ({ navigation }) => {
             containerStyle={styles.emailContainer}
             onChangeText={text => setEmail(text)}
           />
+          <Text style={styles.placeholder}>{strings.password}</Text>
           <CustomTextInput
             secureTextEntry={secureTextEntry}
             value={password}
