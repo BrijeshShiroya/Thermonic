@@ -1,37 +1,52 @@
 import { StyleSheet } from 'react-native';
-import { Colors, verticalScale, Fonts } from '../../theme';
+import { Colors, verticalScale, Fonts, scale } from '../../theme';
 
 const styles = StyleSheet.create({
     container: {
         width: '100%',
         backgroundColor: Colors.white,
-        shadowColor: 'red',
         shadowOffset: {
             width: 0,
             height: 3,
         },
         shadowOpacity: 0.26,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
         shadowRadius: 3,
         elevation: 1,
         borderBottomWidth: 0.5,
         borderBottomColor: 'rgba(191, 193, 196, 0.26)',
+        paddingHorizontal: 12
+    },
+    content: {
+        flex: 1
     },
     headerContainer: {
         minHeight: 54,
         width: '100%',
     },
-    innerRowContainer: {
-        alignItems: 'center',
+    leftContainer: {
+        flex: 1,
+        height: verticalScale(40),
+        width: scale(40),
         justifyContent: 'center',
-        flexDirection: 'row'
+        alignItems: 'flex-start',
     },
     centerContainer: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    rightContainer: {
+        flex: 1,
+        height: verticalScale(40),
+        width: scale(40),
+        alignItems: 'flex-end',
     },
     centerIcon: {
         height: 29,
-        width: 117
+        width: 117,
     },
     centerTextStyle: {
         fontSize: Fonts.size.tiny,

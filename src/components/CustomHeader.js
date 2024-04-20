@@ -1,16 +1,20 @@
 
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
-import { Image, Platform, StatusBar, Text, View } from 'react-native';
+import { Image, Platform, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import icons from '../assets';
 import strings from '../constants/Strings';
 import { Colors } from '../theme';
 import styles from './styles/CustomHeaderStyle';
 
 const CustomHeader = ({
+    leftEnable = false,
+    rightEnable = false,
     statusBarColor = Colors.white,
     statusBarStyle = 'dark-content',
-    outerContainerStyle
+    outerContainerStyle,
+    onLeftPress = () => { },
+    onRightPress = () => { },
 }) => {
     useEffect(() => {
         StatusBar.setBarStyle(statusBarStyle, true);
@@ -20,14 +24,18 @@ const CustomHeader = ({
 
     return (
         <View style={[styles.container, outerContainerStyle]}>
-            <View style={[styles.innerRowContainer, styles.headerContainer]}>
-                <View style={styles.centerContainer}>
-                    <Image source={icons.logo} style={styles.centerIcon} resizeMode='contain' />
-                    <Text style={styles.centerTextStyle}>
-                        {strings.thermonic}
-                    </Text>
-                </View>
+            {leftEnable ? <TouchableOpacity style={styles.leftContainer} onPress={onLeftPress}>
+                <Image source={icons.back} resizeMode='contain' />
+            </TouchableOpacity> : <View style={styles.content} />}
+            <View style={styles.centerContainer}>
+                <Image source={icons.logo} style={styles.centerIcon} resizeMode='contain' />
+                <Text style={styles.centerTextStyle}>
+                    {strings.thermonic}
+                </Text>
             </View>
+            {rightEnable ? <TouchableOpacity style={styles.rightContainer} onPress={onRightPress}>
+                <Image source={icons.add} resizeMode='contain' />
+            </TouchableOpacity> : <View style={styles.content} />}
         </View>
     )
 };
@@ -36,6 +44,10 @@ CustomHeader.propTypes = {
     statusBarColor: PropTypes.string,
     statusBarStyle: PropTypes.string,
     outerContainerStyle: PropTypes.object,
+    leftEnable: PropTypes.bool,
+    rightEnable: PropTypes.bool,
+    onLeftPress: PropTypes.func,
+    onRightPress: PropTypes.func
 };
 
 export default CustomHeader;

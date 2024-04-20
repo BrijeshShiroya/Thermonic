@@ -7,6 +7,8 @@ const icons = {
     homeBg: require('./homeBg.png'),
     search: require('./search.png'),
     filter: require('./filter.png'),
+    add: require('./add.png'),
+    back: require('./back.png'),
 };
 
 export default icons;
