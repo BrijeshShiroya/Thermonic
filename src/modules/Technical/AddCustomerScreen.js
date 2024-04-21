@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { CustomBackground, CustomButton, CustomHeader, CustomTextInput } from '../../components';
 import strings from '../../constants/Strings';
 import styles from './styles/AddCustomerScreenStyle';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const AddCustomerScreen = ({ navigation, route }) => {
 
@@ -11,6 +12,7 @@ const AddCustomerScreen = ({ navigation, route }) => {
     const [customerPassword, setCustomerPassword] = useState('')
     const [customerContact, setCustomerContact] = useState('')
     const [customerEmail, setCustomerEmail] = useState('')
+    const [customerCompany, setCustomerCompany] = useState('')
     const [customerAddress, setCustomerAddress] = useState('')
     const [customerWebsite, setCustomerWebsite] = useState('')
     const [other, setOther] = useState('')
@@ -27,7 +29,7 @@ const AddCustomerScreen = ({ navigation, route }) => {
         <View style={styles.mainContainer}>
             <CustomHeader centerEnable={false} isTitle title={'Add Customer'} leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
-                <View style={styles.innerContainer}>
+                <KeyboardAwareScrollView style={styles.innerContainer}>
                     <Text style={styles.placeholder}>{strings.name}</Text>
                     <CustomTextInput
                         value={customerName}
@@ -64,6 +66,13 @@ const AddCustomerScreen = ({ navigation, route }) => {
                         containerStyle={styles.fieldContainer}
                         onChangeText={text => setCustomerEmail(text)}
                     />
+                    <Text style={styles.placeholder}>{strings.company}</Text>
+                    <CustomTextInput
+                        value={customerCompany}
+                        placeholder={strings.company}
+                        containerStyle={styles.fieldContainer}
+                        onChangeText={text => setCustomerCompany(text)}
+                    />
                     <Text style={styles.placeholder}>{strings.Address}</Text>
                     <CustomTextInput
                         value={customerAddress}
@@ -85,12 +94,13 @@ const AddCustomerScreen = ({ navigation, route }) => {
                         containerStyle={styles.fieldContainer}
                         onChangeText={text => setOther(text)}
                     />
-                </View>
-                <CustomButton
-                    title={strings.add}
-                    style={styles.addCategoryButton}
-                    onPress={onAddPress}
-                />
+                    <CustomButton
+                        title={strings.add}
+                        style={styles.addCategoryButton}
+                        onPress={onAddPress}
+                    />
+                </KeyboardAwareScrollView>
+
             </CustomBackground>
         </View>
     );

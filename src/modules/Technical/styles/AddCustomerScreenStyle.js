@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     addCategoryButton: {
-        marginTop: verticalScale(30),
-        margin: scale(20),
+        marginTop: verticalScale(20),
+        marginBottom: verticalScale(50)
     }
 
 });

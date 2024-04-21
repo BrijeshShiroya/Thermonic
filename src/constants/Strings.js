@@ -11,6 +11,7 @@ const strings = {
   username: 'Username',
   password: 'Password',
   contact: 'Contact',
+  company: 'Company Name',
   Address: 'Address',
   website: 'Website',
   otherInfo: 'Other Info',
