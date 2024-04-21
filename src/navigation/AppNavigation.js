@@ -20,6 +20,7 @@ import { Image } from 'react-native';
 import icons from '../assets';
 import { useSelector } from 'react-redux';
 import ManageListScreen from '../modules/Customer/ManageListScreen';
+import AddCategoryScreen from '../modules/Technical/AddCategoryScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,6 +54,7 @@ const ManageStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ManageListScreen" component={ManageListScreen} />
+      <Stack.Screen name="AddCategoryScreen" component={AddCategoryScreen} />
     </Stack.Navigator>
   );
 };

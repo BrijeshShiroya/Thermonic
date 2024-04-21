@@ -17,20 +17,25 @@ const styles = StyleSheet.create({
         elevation: 1,
         borderBottomWidth: 0.5,
         borderBottomColor: 'rgba(191, 193, 196, 0.26)',
-        paddingHorizontal: 12
+        paddingHorizontal: 12,
+        minHeight: 54
     },
     content: {
         flex: 1
     },
-    headerContainer: {
-        minHeight: 54,
-        width: '100%',
+    title: {
+        fontSize: Fonts.size.regular,
+        fontFamily: Fonts.type.semiBold,
+        color: Colors.darkBlue,
+        alignSelf: 'center',
+        marginLeft: 10
     },
     leftContainer: {
         flex: 1,
         height: verticalScale(40),
         width: scale(40),
-        justifyContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
     centerContainer: {

@@ -10,9 +10,12 @@ import styles from './styles/CustomHeaderStyle';
 const CustomHeader = ({
     leftEnable = false,
     rightEnable = false,
+    isTitle = false,
+    centerEnable = true,
     statusBarColor = Colors.white,
     statusBarStyle = 'dark-content',
     outerContainerStyle,
+    title = '',
     onLeftPress = () => { },
     onRightPress = () => { },
 }) => {
@@ -24,15 +27,17 @@ const CustomHeader = ({
 
     return (
         <View style={[styles.container, outerContainerStyle]}>
-            {leftEnable ? <TouchableOpacity style={styles.leftContainer} onPress={onLeftPress}>
-                <Image source={icons.back} resizeMode='contain' />
-            </TouchableOpacity> : <View style={styles.content} />}
-            <View style={styles.centerContainer}>
+            {leftEnable ?
+                <TouchableOpacity style={styles.leftContainer} onPress={onLeftPress}>
+                    <Image source={icons.back} resizeMode='contain' />
+                    {isTitle && <Text style={styles.title}>{title}</Text>}
+                </TouchableOpacity> : <View style={styles.content} />}
+            {centerEnable ? <View style={styles.centerContainer}>
                 <Image source={icons.logo} style={styles.centerIcon} resizeMode='contain' />
                 <Text style={styles.centerTextStyle}>
                     {strings.thermonic}
                 </Text>
-            </View>
+            </View> : <View />}
             {rightEnable ? <TouchableOpacity style={styles.rightContainer} onPress={onRightPress}>
                 <Image source={icons.add} resizeMode='contain' />
             </TouchableOpacity> : <View style={styles.content} />}
@@ -46,6 +51,7 @@ CustomHeader.propTypes = {
     outerContainerStyle: PropTypes.object,
     leftEnable: PropTypes.bool,
     rightEnable: PropTypes.bool,
+    isTitle: PropTypes.bool,
     onLeftPress: PropTypes.func,
     onRightPress: PropTypes.func
 };
