@@ -23,6 +23,8 @@ import ManageListScreen from '../modules/Customer/ManageListScreen';
 import AddCategoryScreen from '../modules/Technical/AddCategoryScreen';
 import AddCustomerScreen from '../modules/Technical/AddCustomerScreen';
 import AddManagerScreen from '../modules/Technical/AddManagerScreen';
+import AddWorkerScreen from '../modules/Technical/AddWorkerScreen';
+import AddDispatcherScreen from '../modules/Technical/AddDispatcherScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,6 +61,8 @@ const ManageStack = () => {
       <Stack.Screen name="AddCategoryScreen" component={AddCategoryScreen} />
       <Stack.Screen name="AddCustomerScreen" component={AddCustomerScreen} />
       <Stack.Screen name="AddManagerScreen" component={AddManagerScreen} />
+      <Stack.Screen name="AddWorkerScreen" component={AddWorkerScreen} />
+      <Stack.Screen name="AddDispatcherScreen" component={AddDispatcherScreen} />
     </Stack.Navigator>
   );
 };

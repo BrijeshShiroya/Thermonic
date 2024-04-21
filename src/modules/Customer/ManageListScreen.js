@@ -18,8 +18,8 @@ const ManageListScreen = ({ navigation }) => {
                     <DropdownListItem title={'Sub Category'} isRight onPress={() => navigateToScreen('AddCategoryScreen', { categoryType: 2 })} />
                     <DropdownListItem title={'Customer'} isRight onPress={() => navigateToScreen('AddCustomerScreen')} />
                     <DropdownListItem title={'Manager'} isRight onPress={() => navigateToScreen('AddManagerScreen')} />
-                    <DropdownListItem title={'Worker'} isRight />
-                    <DropdownListItem title={'Dispatcher'} isRight />
+                    <DropdownListItem title={'Worker'} isRight onPress={() => navigateToScreen('AddWorkerScreen')} />
+                    <DropdownListItem title={'Dispatcher'} isRight onPress={() => navigateToScreen('AddDispatcherScreen')} />
                 </View>
             </CustomBackground>
         </View>

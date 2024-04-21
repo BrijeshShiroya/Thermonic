@@ -14,6 +14,8 @@ const strings = {
   contact: 'Contact',
   company: 'Company Name',
   managerName: 'Manager Name',
+  workerName: 'Worker Name',
+  dispatcherName: 'Dispatcher Name',
   Address: 'Address',
   website: 'Website',
   otherInfo: 'Other Info',
