@@ -13,7 +13,7 @@ const AddCategoryScreen = ({ navigation, route }) => {
         navigation.goBack();
     }
 
-    const onAddCategoryPress = () => {
+    const onAddPress = () => {
         alert('onAddCategoryPress')
     }
 
@@ -32,9 +32,9 @@ const AddCategoryScreen = ({ navigation, route }) => {
                     />
                 </View>
                 <CustomButton
-                    title={strings.addCategoryButton}
+                    title={strings.add}
                     style={styles.addCategoryButton}
-                    onPress={onAddCategoryPress}
+                    onPress={onAddPress}
                 />
             </CustomBackground>
         </View>

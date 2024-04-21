@@ -9,7 +9,7 @@ const strings = {
   category: 'Category',
   password: 'Password',
   loginButton: 'Log In',
-  addCategoryButton: 'Add Category',
+  add: 'Add',
   invalidEmail: 'Please enter valid email',
   invalidPassword: 'Please enter password',
   passwordInvalid: 'Please enter Password',
