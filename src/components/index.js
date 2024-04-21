@@ -9,7 +9,7 @@ import Status from './Status'
 import ProfileField from './ProfileField'
 import DropdownListItem from './DropdownListItem'
 import CustomDropdown from './CustomDropdown'
-
+import AddSubCategoryField from './AddSubCategoryField';
 
 export {
     CustomTextInput,
@@ -22,5 +22,6 @@ export {
     Status,
     ProfileField,
     DropdownListItem,
-    CustomDropdown
+    CustomDropdown,
+    AddSubCategoryField
 }

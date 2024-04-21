@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { CustomBackground, CustomDropdown, CustomHeader, CustomTextInput } from '../../components';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { AddSubCategoryField, CustomBackground, CustomDropdown, CustomHeader, CustomTextInput } from '../../components';
 import strings from '../../constants/Strings';
 import styles from './styles/AddCustomerOrderScreenStyles';
 
@@ -36,6 +36,7 @@ const AddCustomerOrderScreen = ({ navigation }) => {
     const [product, setProduct] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
     const [search, setSearch] = useState('')
+    const [subCategories, setSubCategories] = useState(['c1', 'c2', 'c3'])
 
 
     const onBackPress = () => {
@@ -43,8 +44,14 @@ const AddCustomerOrderScreen = ({ navigation }) => {
         navigation.goBack()
     }
 
-    const handleSearch = (text) => {
-        setSearch(text)
+    const addSubCategory = () => {
+        setSubCategories([...subCategories, '1'])
+    }
+
+    const onDelete = (index) => {
+        const _subCategories = [...subCategories];
+        _subCategories.splice(index, 1)
+        setSubCategories(_subCategories)
     }
 
     return (
@@ -52,7 +59,6 @@ const AddCustomerOrderScreen = ({ navigation }) => {
             <CustomHeader leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    <Text>Add Customer Order Screen</Text>
                     <Text style={styles.placeholder}>{strings.product}</Text>
                     <TouchableOpacity onPress={() => setModalVisible(true)}>
                         <CustomTextInput
@@ -63,11 +69,18 @@ const AddCustomerOrderScreen = ({ navigation }) => {
                             onChangeText={(text) => setProduct(text)}
                         />
                     </TouchableOpacity>
+                    {subCategories?.length > 0 && <Text style={styles.subCategoryTitle}>{strings.subCategories}</Text>}
+                    <FlatList data={subCategories} renderItem={({ item, index }) => <AddSubCategoryField title={item} onDeletePress={() => onDelete(index)} />} />
+                    <Text onPress={addSubCategory} style={styles.addSubcategoryTitle}>{strings.addSubCategories}</Text>
                     <CustomDropdown
                         search={search}
                         handleSearch={setSearch}
                         dataList={Products}
                         setModalVisible={setModalVisible}
+                        onSelectItem={(item) => {
+                            setProduct(item)
+                            setModalVisible(false)
+                        }}
                         modalVisible={modalVisible} />
                 </View>
             </CustomBackground>

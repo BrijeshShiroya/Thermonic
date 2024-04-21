@@ -12,6 +12,7 @@ const CustomDropdown = ({
     setModalVisible = () => { },
     dataList = [],
     search,
+    onSelectItem = () => { },
     handleSearch = () => { },
 }) => {
     return (
@@ -38,7 +39,7 @@ const CustomDropdown = ({
                         <FlatList
                             data={dataList}
                             showsVerticalScrollIndicator={false}
-                            renderItem={({ item }) => <DropdownListItem title={item} />}
+                            renderItem={({ item }) => <DropdownListItem title={item} onPress={() => onSelectItem(item)} />}
                         />
                         <CustomButton
                             title={strings.cancel}
@@ -57,6 +58,7 @@ CustomDropdown.propTypes = {
     modalVisible: PropTypes.bool,
     setModalVisible: PropTypes.fun,
     handleSearch: PropTypes.fun,
+    onSelectItem: PropTypes.fun,
     search: PropTypes.string,
     dataList: PropTypes.array
 };

@@ -24,6 +24,17 @@ const styles = StyleSheet.create({
         marginTop: verticalScale(30),
         width: '100%',
     },
+    addSubcategoryTitle: {
+        fontFamily: Fonts.type.semiBold,
+        color: Colors.themeBlue,
+        fontSize: Fonts.size.regular,
+    },
+    subCategoryTitle: {
+        marginTop: 10,
+        fontFamily: Fonts.type.semiBold,
+        color: Colors.textDark,
+        fontSize: Fonts.size.medium,
+    },
     input: {
         paddingHorizontal: verticalScale(20),
         height: 46,

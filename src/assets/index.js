@@ -12,6 +12,7 @@ const icons = {
     settingsSelected: require('./settingsSelected.png'),
     settingsUnselected: require('./settingsUnselected.png'),
     next: require('./next.png'),
+    remove: require('./remove.png'),
 };
 
 export default icons;
