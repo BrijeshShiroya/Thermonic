@@ -22,6 +22,7 @@ import { useSelector } from 'react-redux';
 import ManageListScreen from '../modules/Customer/ManageListScreen';
 import AddCategoryScreen from '../modules/Technical/AddCategoryScreen';
 import AddCustomerScreen from '../modules/Technical/AddCustomerScreen';
+import AddManagerScreen from '../modules/Technical/AddManagerScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -57,6 +58,7 @@ const ManageStack = () => {
       <Stack.Screen name="ManageListScreen" component={ManageListScreen} />
       <Stack.Screen name="AddCategoryScreen" component={AddCategoryScreen} />
       <Stack.Screen name="AddCustomerScreen" component={AddCustomerScreen} />
+      <Stack.Screen name="AddManagerScreen" component={AddManagerScreen} />
     </Stack.Navigator>
   );
 };

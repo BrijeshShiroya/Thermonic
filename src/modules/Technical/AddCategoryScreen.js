@@ -22,12 +22,12 @@ const AddCategoryScreen = ({ navigation, route }) => {
             <CustomHeader centerEnable={false} isTitle title={title} leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    <Text style={styles.placeholder}>{strings.category}</Text>
+                    <Text style={styles.placeholder}>{route?.params?.categoryType == 1 ? strings.category : strings.subCategory}</Text>
                     <CustomTextInput
                         value={categoryName}
-                        placeholder={strings.category}
+                        placeholder={route?.params?.categoryType == 1 ? strings.category : strings.subCategory}
                         keyboardType={'email-address'}
-                        containerStyle={styles.categotyContainer}
+                        containerStyle={styles.categoryContainer}
                         onChangeText={text => setCategoryName(text)}
                     />
                 </View>

@@ -29,7 +29,7 @@ const AddCustomerScreen = ({ navigation, route }) => {
         <View style={styles.mainContainer}>
             <CustomHeader centerEnable={false} isTitle title={'Add Customer'} leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
-                <KeyboardAwareScrollView style={styles.innerContainer}>
+                <KeyboardAwareScrollView style={styles.innerContainer} showsVerticalScrollIndicator={false}>
                     <Text style={styles.placeholder}>{strings.name}</Text>
                     <CustomTextInput
                         value={customerName}
@@ -55,6 +55,8 @@ const AddCustomerScreen = ({ navigation, route }) => {
                     <CustomTextInput
                         value={customerContact}
                         placeholder={strings.contact}
+                        keyboardType='number-pad'
+                        maxLength={10}
                         containerStyle={styles.fieldContainer}
                         onChangeText={text => setCustomerContact(text)}
                     />
