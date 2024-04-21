@@ -29,7 +29,8 @@ export const UserType = {
   customer: 'customer',
   technical: 'technical',
   manager: 'manager',
-  production: 'production'
+  production: 'production',
+  dispatcher: 'dispatcher'
 }
 
 export const CustomerOrderStatus = {

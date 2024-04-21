@@ -7,7 +7,7 @@ import { Strings } from '../constants';
 export function* login(api, action) {
   yield delay(2000)
   yield put(
-    AuthActions.authSuccess({ email: action?.email } || null),
+    AuthActions.authSuccess({ email: action?.email, userType: action?.password } || null),
   );
   // const response = yield call(api.login, {
   //   email: action?.email,

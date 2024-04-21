@@ -25,7 +25,7 @@ const AddDispatcherScreen = ({ navigation, route }) => {
             <CustomHeader centerEnable={false} isTitle title={'Add Dispatcher'} leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
                 <KeyboardAwareScrollView style={styles.innerContainer} showsVerticalScrollIndicator={false}>
-                    <Text style={styles.placeholder}>{strings.workerName}</Text>
+                    <Text style={styles.placeholder}>{strings.dispatcherName}</Text>
                     <CustomTextInput
                         value={dispatcherName}
                         placeholder={strings.dispatcherName}

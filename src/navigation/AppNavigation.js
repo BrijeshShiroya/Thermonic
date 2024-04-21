@@ -19,7 +19,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 import icons from '../assets';
 import { useSelector } from 'react-redux';
-import ManageListScreen from '../modules/Customer/ManageListScreen';
+import ManageListScreen from '../modules/Technical/ManageListScreen';
+import ManageListItemsScreen from '../modules/Technical/ManageListItemsScreen';
 import AddCategoryScreen from '../modules/Technical/AddCategoryScreen';
 import AddCustomerScreen from '../modules/Technical/AddCustomerScreen';
 import AddManagerScreen from '../modules/Technical/AddManagerScreen';
@@ -63,6 +64,7 @@ const ManageStack = () => {
       <Stack.Screen name="AddManagerScreen" component={AddManagerScreen} />
       <Stack.Screen name="AddWorkerScreen" component={AddWorkerScreen} />
       <Stack.Screen name="AddDispatcherScreen" component={AddDispatcherScreen} />
+      <Stack.Screen name="ManageListItemsScreen" component={ManageListItemsScreen} />
     </Stack.Navigator>
   );
 };
@@ -176,9 +178,10 @@ const RootStackScreen = (props, ref) => {
 
   useEffect(() => {
     setAuthUser(user)
+    setCurrentUserRole(user?.userType)
   }, [user])
 
-  const [currentUserRole, setCurrentUserRole] = useState(UserType.technical)
+  const [currentUserRole, setCurrentUserRole] = useState(user?.userType)
 
   const loggedInUserRole = () => {
     if (currentUserRole == UserType.customer) {
