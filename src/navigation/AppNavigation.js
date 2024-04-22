@@ -28,6 +28,7 @@ import AddManagerScreen from '../modules/Technical/AddManagerScreen';
 import AddWorkerScreen from '../modules/Technical/AddWorkerScreen';
 import AddDispatcherScreen from '../modules/Technical/AddDispatcherScreen';
 import OrderListScreen from '../modules/Technical/OrderListScreen';
+import PendingOrderListScreen from '../modules/Technical/PendingOrderListScreen'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -55,6 +56,8 @@ const TechnicalHomeStack = () => {
       <Stack.Screen name="TechnicalHomeScreen" component={TechnicalHomeScreen} />
       <Stack.Screen name="AllOrdersScreen" component={AllOrdersScreen} />
       <Stack.Screen name="OrderListScreen" component={OrderListScreen} />
+      <Stack.Screen name="AddCustomerOrderScreen" component={AddCustomerOrderScreen} />
+      <Stack.Screen name="PendingOrderListScreen" component={PendingOrderListScreen} />
     </Stack.Navigator>
   );
 };

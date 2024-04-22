@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import styles from './styles/TechnicalHomeScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader } from '../../components';
 import strings from '../../constants/Strings';
@@ -10,12 +10,16 @@ const TechnicalHomeScreen = ({ navigation }) => {
         navigation.navigate(screenName)
     }
 
+    const onAddPress = () => {
+        navigation.navigate('AddCustomerOrderScreen')
+    }
+
     return (
         <View style={styles.mainContainer}>
-            <CustomHeader />
+            <CustomHeader rightEnable onRightPress={onAddPress} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    <CustomButton style={styles.button} title={strings.acceptOrder} onPress={() => navigateToScreen("AllOrdersScreen")} />
+                    <CustomButton style={styles.button} title={strings.acceptOrder} onPress={() => navigateToScreen("PendingOrderListScreen")} />
                     <CustomButton title={strings.viewAllOrder} onPress={() => navigateToScreen("AllOrdersScreen")} />
                 </View>
             </CustomBackground>

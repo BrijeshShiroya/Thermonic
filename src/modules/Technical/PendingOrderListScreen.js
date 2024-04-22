@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
-import styles from './styles/OrderListScreenStyles';
+import styles from './styles/PendingOrderListScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader, CustomerOrder } from '../../components';
 import strings from '../../constants/Strings';
 import { CustomerOrderStatus } from '../../services/Utils';
@@ -71,7 +71,7 @@ const DATA = [
     },
 ];
 
-const OrderListScreen = ({ navigation, route }) => {
+const PendingOrderListScreen = ({ navigation, route }) => {
 
     const getType = () => {
         const type = route?.params?.type
@@ -92,7 +92,7 @@ const OrderListScreen = ({ navigation, route }) => {
 
     return (
         <View style={styles.mainContainer}>
-            <CustomHeader leftEnable centerEnable={false} onLeftPress={onBackPress} isTitle title={getType()} />
+            <CustomHeader leftEnable centerEnable={false} onLeftPress={onBackPress} isTitle title={strings.pendingOrders} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
                     <FlatList
@@ -108,4 +108,4 @@ const OrderListScreen = ({ navigation, route }) => {
     );
 };
 
-export default OrderListScreen;
+export default PendingOrderListScreen;

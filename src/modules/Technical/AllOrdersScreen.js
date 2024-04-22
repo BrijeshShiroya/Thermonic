@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import styles from './styles/AllOrderScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader } from '../../components';
 import strings from '../../constants/Strings';
