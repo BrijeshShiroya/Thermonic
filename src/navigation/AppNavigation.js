@@ -12,6 +12,7 @@ import AddCustomerOrderScreen from '../modules/Customer/AddCustomerOrderScreen';
 import ManagerHomeScreen from '../modules/Manager/ManagerHomeScreen';
 import ManagerProfileScreen from '../modules/Manager/ManagerProfileScreen';
 import TechnicalHomeScreen from '../modules/Technical/TechnicalHomeScreen';
+import AllOrdersScreen from '../modules/Technical/AllOrdersScreen';
 import TechnicalProfileScreen from '../modules/Technical/TechnicalProfileScreen';
 import ProductionHomeScreen from '../modules/Production/ProductionHomeScreen';
 import ProductionProfileScreen from '../modules/Production/ProductionProfileScreen';
@@ -26,6 +27,7 @@ import AddCustomerScreen from '../modules/Technical/AddCustomerScreen';
 import AddManagerScreen from '../modules/Technical/AddManagerScreen';
 import AddWorkerScreen from '../modules/Technical/AddWorkerScreen';
 import AddDispatcherScreen from '../modules/Technical/AddDispatcherScreen';
+import OrderListScreen from '../modules/Technical/OrderListScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,6 +53,8 @@ const TechnicalHomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="TechnicalHomeScreen" component={TechnicalHomeScreen} />
+      <Stack.Screen name="AllOrdersScreen" component={AllOrdersScreen} />
+      <Stack.Screen name="OrderListScreen" component={OrderListScreen} />
     </Stack.Navigator>
   );
 };

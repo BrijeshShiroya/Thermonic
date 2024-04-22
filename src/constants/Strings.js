@@ -32,7 +32,13 @@ const strings = {
   filters: 'Filters',
   clearAll: 'CLEAR ALL',
   subCategories: `Product's sub categories`,
-  addSubCategories: `Add your product's sub categories`
+  addSubCategories: `Add your product's sub categories`,
+  acceptOrder: 'Accept Order',
+  viewAllOrder: 'View All Order',
+  pending: 'Pending Orders',
+  inProgress: 'In Progress Orders',
+  accepted: 'Accepted Orders',
+  dispatched: 'Dispatched Orders',
 };
 
 export default strings;

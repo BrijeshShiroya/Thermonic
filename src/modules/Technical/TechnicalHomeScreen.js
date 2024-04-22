@@ -1,14 +1,23 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import styles from './styles/TechnicalHomeScreenStyles';
-import { CustomBackground, CustomHeader } from '../../components';
+import { CustomBackground, CustomButton, CustomHeader } from '../../components';
+import strings from '../../constants/Strings';
 
 const TechnicalHomeScreen = ({ navigation }) => {
+
+    const navigateToScreen = (screenName) => {
+        navigation.navigate(screenName)
+    }
+
     return (
         <View style={styles.mainContainer}>
             <CustomHeader />
             <CustomBackground>
-                <Text>Technical Home</Text>
+                <View style={styles.innerContainer}>
+                    <CustomButton style={styles.button} title={strings.acceptOrder} onPress={() => navigateToScreen("AllOrdersScreen")} />
+                    <CustomButton title={strings.viewAllOrder} onPress={() => navigateToScreen("AllOrdersScreen")} />
+                </View>
             </CustomBackground>
         </View>
     );
