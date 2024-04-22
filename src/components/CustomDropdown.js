@@ -1,65 +1,94 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Modal, View, TextInput, FlatList } from 'react-native';
+import { Modal, View, TextInput, FlatList, Text, TouchableOpacity, Image } from 'react-native';
 import { Colors } from '../theme';
 import styles from './styles/CustomDropdownStyle';
 import strings from '../constants/Strings';
 import DropdownListItem from './DropdownListItem';
 import CustomButton from './CustomButton';
+import CustomTextInput from './CustomTextInput';
+import icons from '../assets';
 
 const CustomDropdown = ({
-    modalVisible = false,
-    setModalVisible = () => { },
+    selectedValue = '',
+    setSelectedValue = () => { },
+    placeholder = '',
+    onOpen = () => { },
     dataList = [],
-    search,
     onSelectItem = () => { },
-    handleSearch = () => { },
+    isDeletable = false,
+    onDeletePress = () => { }
 }) => {
+    const [modalVisible, setModalVisible] = useState(false)
+    const [search, setSearch] = useState('')
+
     return (
-        <View>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                }}>
-                <View style={styles.container}>
-                    <View style={styles.innerContainer}>
-                        <TextInput
-                            placeholder={strings.search}
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            clearButtonMode="always"
-                            value={search}
-                            onChangeText={queryText => handleSearch(queryText)}
-                            style={styles.input}
-                            placeholderTextColor={Colors.darkGray}
+        <>
+            <View style={styles.row}>
+                <View style={styles.innerContainer}>
+                    <Text style={styles.placeholder}>{placeholder}</Text>
+                    <TouchableOpacity onPress={() => setModalVisible(true)}>
+                        <CustomTextInput
+                            value={selectedValue}
+                            editable={false}
+                            placeholder={placeholder}
+                            containerStyle={styles.emailContainer}
+                            onChangeText={(text) => setSelectedValue(text)}
                         />
-                        <FlatList
-                            data={dataList}
-                            showsVerticalScrollIndicator={false}
-                            renderItem={({ item }) => <DropdownListItem title={item} onPress={() => onSelectItem(item)} />}
-                        />
-                        <CustomButton
-                            title={strings.cancel}
-                            style={styles.cancelButton}
-                            onPress={() => setModalVisible(false)}
-                        />
-                    </View>
+                    </TouchableOpacity>
                 </View>
-            </Modal>
-        </View>
+                {isDeletable && <TouchableOpacity onPress={onDeletePress} >
+                    <Image style={styles.delete} source={icons.remove} resizeMode='contain' />
+                </TouchableOpacity>}
+            </View>
+            <View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        setModalVisible(!modalVisible);
+                    }}>
+                    <View style={styles.container}>
+                        <View style={styles.innerContainer}>
+                            <TextInput
+                                placeholder={strings.search}
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                clearButtonMode="always"
+                                value={search}
+                                onChangeText={queryText => setSearch(queryText)}
+                                style={styles.input}
+                                placeholderTextColor={Colors.darkGray}
+                            />
+                            <FlatList
+                                data={dataList}
+                                showsVerticalScrollIndicator={false}
+                                renderItem={({ item }) => <DropdownListItem title={item} onPress={() => {
+                                    onSelectItem(item)
+                                    setModalVisible(false)
+                                }} />}
+                            />
+                            <CustomButton
+                                title={strings.cancel}
+                                style={styles.cancelButton}
+                                onPress={() => setModalVisible(false)}
+                            />
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+        </>
     );
 };
 
 CustomDropdown.propTypes = {
-    title: PropTypes.string,
-    modalVisible: PropTypes.bool,
-    setModalVisible: PropTypes.fun,
-    handleSearch: PropTypes.fun,
-    onSelectItem: PropTypes.fun,
-    search: PropTypes.string,
-    dataList: PropTypes.array
+    selectedValue: PropTypes.string,
+    setSelectedValue: PropTypes.func,
+    placeholder: PropTypes.string,
+    onOpen: PropTypes.func,
+    onSelectItem: PropTypes.func,
+    dataList: PropTypes.array,
+    isDeletable: PropTypes.bool
 };
 export default CustomDropdown;

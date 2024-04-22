@@ -20,36 +20,19 @@ const AddSubCategoryField = ({
     title
 }) => {
     const [subCategory, setSubCategory] = useState('')
-    const [modalVisible, setModalVisible] =
-        useState(false);
-    const [search, setSearch] = useState('')
 
     return (
         <View style={styles.container}>
-            <View style={styles.innerContainer}>
-                <TouchableOpacity style={styles.inputContainer} onPress={() => setModalVisible(true)}>
-                    <CustomTextInput
-                        value={subCategory}
-                        editable={false}
-                        placeholder={strings.subCategory}
-                        containerStyle={styles.inputContainer}
-                        onChangeText={(text) => { }}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={onDeletePress} >
-                    <Image style={styles.delete} source={icons.remove} resizeMode='contain' />
-                </TouchableOpacity>
-            </View>
             <CustomDropdown
-                search={search}
-                handleSearch={setSearch}
+                selectedValue={subCategory}
+                setSelectedValue={setSubCategory}
                 dataList={SubCategories}
-                setModalVisible={setModalVisible}
+                isDeletable
                 onSelectItem={(item) => {
                     setSubCategory(item)
-                    setModalVisible(false)
                 }}
-                modalVisible={modalVisible} />
+                onDeletePress={onDeletePress}
+            />
         </View>
     );
 };

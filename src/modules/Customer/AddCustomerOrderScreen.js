@@ -34,13 +34,10 @@ const Products = [
 const AddCustomerOrderScreen = ({ navigation }) => {
 
     const [product, setProduct] = useState('')
-    const [modalVisible, setModalVisible] = useState(false);
-    const [search, setSearch] = useState('')
     const [subCategories, setSubCategories] = useState(['c1', 'c2', 'c3'])
 
 
     const onBackPress = () => {
-        setModalVisible(false)
         navigation.goBack()
     }
 
@@ -59,29 +56,18 @@ const AddCustomerOrderScreen = ({ navigation }) => {
             <CustomHeader leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    <Text style={styles.placeholder}>{strings.product}</Text>
-                    <TouchableOpacity onPress={() => setModalVisible(true)}>
-                        <CustomTextInput
-                            value={product}
-                            editable={false}
-                            placeholder={strings.product}
-                            containerStyle={styles.emailContainer}
-                            onChangeText={(text) => setProduct(text)}
-                        />
-                    </TouchableOpacity>
+                    <CustomDropdown
+                        placeholder={strings.product}
+                        selectedValue={product}
+                        setSelectedValue={(text) => setProduct(text)}
+                        dataList={Products}
+                        onSelectItem={(item) => {
+                            setProduct(item)
+                        }} />
                     {subCategories?.length > 0 && <Text style={styles.subCategoryTitle}>{strings.subCategories}</Text>}
                     <FlatList data={subCategories} renderItem={({ item, index }) => <AddSubCategoryField title={item} onDeletePress={() => onDelete(index)} />} />
                     <Text onPress={addSubCategory} style={styles.addSubcategoryTitle}>{strings.addSubCategories}</Text>
-                    <CustomDropdown
-                        search={search}
-                        handleSearch={setSearch}
-                        dataList={Products}
-                        setModalVisible={setModalVisible}
-                        onSelectItem={(item) => {
-                            setProduct(item)
-                            setModalVisible(false)
-                        }}
-                        modalVisible={modalVisible} />
+
                 </View>
             </CustomBackground>
         </View>

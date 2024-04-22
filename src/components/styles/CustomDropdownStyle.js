@@ -27,6 +27,15 @@ const styles = StyleSheet.create({
         marginTop: verticalScale(30),
         width: '100%',
     },
+    delete: {
+        marginTop: 28,
+        marginLeft: 6,
+        height: 30,
+        width: 30
+    },
+    row: {
+        flexDirection: 'row'
+    }
 });
 
 export default styles;
