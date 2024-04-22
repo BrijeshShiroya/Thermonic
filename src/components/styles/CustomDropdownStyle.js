@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.listItemBg
     },
     innerContainer: {
-        flex: 1
+        flex: 1,
     },
     input: {
         paddingHorizontal: verticalScale(20),
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     delete: {
-        marginTop: 28,
+        marginTop: 6,
         marginLeft: 6,
         height: 30,
         width: 30

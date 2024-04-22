@@ -26,7 +26,7 @@ const CustomDropdown = ({
         <>
             <View style={styles.row}>
                 <View style={styles.innerContainer}>
-                    <Text style={styles.placeholder}>{placeholder}</Text>
+                    {placeholder && <Text style={styles.placeholder}>{placeholder}</Text>}
                     <TouchableOpacity onPress={() => setModalVisible(true)}>
                         <CustomTextInput
                             value={selectedValue}

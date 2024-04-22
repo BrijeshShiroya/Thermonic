@@ -34,7 +34,7 @@ const Products = [
 const AddCustomerOrderScreen = ({ navigation }) => {
 
     const [product, setProduct] = useState('')
-    const [subCategories, setSubCategories] = useState(['c1', 'c2', 'c3'])
+    const [subCategories, setSubCategories] = useState([])
 
 
     const onBackPress = () => {

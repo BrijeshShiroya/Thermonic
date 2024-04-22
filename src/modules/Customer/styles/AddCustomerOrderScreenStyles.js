@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.type.semiBold,
         color: Colors.themeBlue,
         fontSize: Fonts.size.regular,
+        marginTop: 5
     },
     subCategoryTitle: {
         marginTop: 10,
