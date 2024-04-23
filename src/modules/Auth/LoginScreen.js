@@ -21,7 +21,7 @@ import { UserType } from '../../services/Utils'
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('brijesh@yopmail.com');
+  const [email, setEmail] = useState('shiroya0007@hotmail.com');
   const [password, setPassword] = useState('123456');
   const [secureTextEntry, setSecureTextEntry] = useState(true)
   const { fetching } = useSelector(state => state.auth);
@@ -37,7 +37,7 @@ const LoginScreen = ({ navigation }) => {
       Alert.alert(strings.thermonic, strings.invalidPassword);
     } else {
       Keyboard.dismiss();
-      dispatch(AuthTypes.authRequest(email.toLocaleLowerCase(), userType));
+      dispatch(AuthTypes.authRequest(email.toLocaleLowerCase(), password));
     }
   };
 

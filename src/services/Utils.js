@@ -11,13 +11,14 @@ export const apiConfig = baseURL =>
   apisauce.create({
     baseURL,
     timeout: 30000,
-    headers: { 'Cache-Control': 'no-cache' },
+
+    headers: { 'Content-Type': 'multipart/form-data', 'key': 'Thermonic$77927##' },
   });
 
 export async function getError(response) {
   // if (response.problem === 'CLIENT_ERROR') return response.data.error;
-  if (response?.messages) {
-    return response?.messages;
+  if (response?.message) {
+    return response?.message;
   }
   if (['CONNECTION_ERROR', 'SERVER_ERROR'].includes(response?.message)) {
     return 'Server is not available';
