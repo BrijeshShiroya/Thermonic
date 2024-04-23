@@ -12,7 +12,7 @@ export const apiConfig = baseURL =>
     baseURL,
     timeout: 30000,
 
-    headers: { 'Content-Type': 'multipart/form-data', 'key': 'Thermonic$77927##' },
+    headers: { 'Content-Type': 'multipart/form-data', 'key': 'Thermonic$77927##', },
   });
 
 export async function getError(response) {

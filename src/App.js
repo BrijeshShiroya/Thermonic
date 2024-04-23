@@ -11,6 +11,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import reduxStore from './redux/Store';
 import RootContainer from './modules/RootContainer';
 import SplashScreen from 'react-native-splash-screen';
+import "react-native-devsettings";
+
 
 const App = () => {
   useEffect(() => {
