@@ -185,15 +185,15 @@ const RootStackScreen = (props, ref) => {
 
   useEffect(() => {
     setAuthUser(user)
-    setCurrentUserRole(user?.userType)
+    setCurrentUserRole(user?.user_type)
   }, [user])
 
-  const [currentUserRole, setCurrentUserRole] = useState(user?.userType)
+  const [currentUserRole, setCurrentUserRole] = useState('')
 
   const loggedInUserRole = () => {
     if (currentUserRole == UserType.customer) {
       return <Stack.Screen name="CustomerTab" component={CustomerTabBar} />
-    } else if (currentUserRole == UserType.technical) {
+    } else if (currentUserRole == UserType.owner) {
       return <Stack.Screen name="TechnicalTabBar" component={TechnicalTabBar} />
     } else if (currentUserRole == UserType.production) {
       return <Stack.Screen name="ProductionTabBar" component={ProductionTabBar} />

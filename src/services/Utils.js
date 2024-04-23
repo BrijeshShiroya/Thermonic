@@ -28,7 +28,7 @@ export async function getError(response) {
 
 export const UserType = {
   customer: 'customer',
-  technical: 'technical',
+  owner: 'owner',
   manager: 'manager',
   production: 'production',
   dispatcher: 'dispatcher'

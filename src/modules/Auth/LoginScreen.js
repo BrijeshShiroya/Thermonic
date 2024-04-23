@@ -69,7 +69,7 @@ const LoginScreen = ({ navigation }) => {
             onPress={onLoginPress}
           />
           <Text onPress={() => setUserType(UserType.customer)}>Customer</Text>
-          <Text onPress={() => setUserType(UserType.technical)}>technical</Text>
+          <Text onPress={() => setUserType(UserType.owner)}>Owner</Text>
           <Text onPress={() => setUserType(UserType.manager)}>Manager</Text>
           <Text onPress={() => setUserType(UserType.production)}>Production</Text>
           <Text onPress={() => setUserType(UserType.dispatcher)}>Dispatcher</Text>
