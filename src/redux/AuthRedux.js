@@ -26,7 +26,7 @@ export const AuthSelectors = {
 /* ------------- Reducers ------------- */
 // request the data from an api
 export const request = state =>
-  state.merge({ fetching: true, error: null });
+  state.merge({ fetching: false, error: null });
 
 // successful api lookup
 export const success = (state, action) => {

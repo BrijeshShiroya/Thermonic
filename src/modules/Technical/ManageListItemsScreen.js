@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { CustomBackground, CustomHeader, DropdownListItem } from '../../components';
 import styles from './styles/ManageListItemsScreenStyles';
+import { useDispatch, useSelector } from 'react-redux';
+import CategoryTypes, { CategorySelectors } from '../../redux/CategoryRedux';
+
 
 const getData = (title) => {
     if (title == "Category") {
@@ -32,8 +35,15 @@ const getData = (title) => {
 }
 
 const ManageListItemsScreen = ({ navigation, route }) => {
+    const dispatch = useDispatch();
 
     const title = route?.params?.manageItem;
+    useEffect(() => {
+        title == "Category" ? dispatch(CategoryTypes.categoryListRequest()) : dispatch(CategoryTypes.subCategoryListRequest())
+    }, [title])
+
+    const { category, subCategory } = useSelector(state => state.category)
+
 
     const onBackPress = () => {
         navigation.goBack()
@@ -62,8 +72,8 @@ const ManageListItemsScreen = ({ navigation, route }) => {
             <CustomHeader leftEnable onLeftPress={onBackPress} rightEnable onRightPress={onAddPress} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    <FlatList data={Data} showsVerticalScrollIndicator={false}
-                        renderItem={({ item }) => <DropdownListItem title={item?.title} />} />
+                    <FlatList data={title == 'Category' ? category : subCategory} showsVerticalScrollIndicator={false}
+                        renderItem={({ item }) => <DropdownListItem title={title == 'Category' ? item?.category_name : item?.sub_category_name} />} />
                 </View>
             </CustomBackground>
         </View>

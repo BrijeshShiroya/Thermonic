@@ -15,9 +15,13 @@ const toFormData = (params) => {
 
 const home = () => {
   const login = credentials => api.post('login', toFormData(credentials));
+  const categoryList = () => api.get('pro_category_list');
+  const subCategoryList = () => api.get('pro_sub_category_list');
 
   return {
     login,
+    categoryList,
+    subCategoryList
   };
 };
 export default {

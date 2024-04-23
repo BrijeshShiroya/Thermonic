@@ -3,7 +3,7 @@ import AuthActions from '../redux/AuthRedux';
 import { Alert, Platform } from 'react-native';
 import { getError } from '../services/Utils';
 import { Strings } from '../constants';
-
+import { apiConfig } from '../services/Utils';
 export function* login(api, action) {
   const response = yield call(api.login, {
     username: action?.email,
