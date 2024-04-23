@@ -1,7 +1,7 @@
 import { apiConfig } from './Utils';
 const Secrets = {
-  API_URL_DEBUG: 'https://app.thermonicindia.com/api/therm_api/',
-  API_URL: 'https://app.thermonicindia.com/api/therm_api/',
+  API_URL_DEBUG: 'http://app.thermonicindia.com/api/therm_api/',
+  API_URL: 'http://app.thermonicindia.com/api/therm_api/',
 };
 const api = apiConfig(__DEV__ ? Secrets.API_URL_DEBUG : Secrets.API_URL);
 
