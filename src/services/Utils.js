@@ -27,10 +27,10 @@ export async function getError(response) {
 }
 
 export const UserType = {
-  customer: 'customer',
+  client: 'client',
   owner: 'owner',
   manager: 'manager',
-  production: 'production',
+  Worker: 'worker',
   dispatcher: 'dispatcher'
 }
 

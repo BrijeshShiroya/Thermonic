@@ -14,7 +14,6 @@ const AddCustomerScreen = ({ navigation, route }) => {
     const [customerEmail, setCustomerEmail] = useState('')
     const [customerCompany, setCustomerCompany] = useState('')
     const [customerAddress, setCustomerAddress] = useState('')
-    const [other, setOther] = useState('')
 
     const onBackPress = () => {
         navigation.goBack();
@@ -80,13 +79,6 @@ const AddCustomerScreen = ({ navigation, route }) => {
                         placeholder={strings.Address}
                         containerStyle={styles.fieldContainer}
                         onChangeText={text => setCustomerAddress(text)}
-                    />
-                    <Text style={styles.placeholder}>{strings.otherInfo}</Text>
-                    <CustomTextInput
-                        value={other}
-                        placeholder={strings.otherInfo}
-                        containerStyle={styles.fieldContainer}
-                        onChangeText={text => setOther(text)}
                     />
                     <CustomButton
                         title={strings.add}

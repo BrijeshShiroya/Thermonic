@@ -28,14 +28,14 @@ const auth = () => {
   };
 };
 
-const customer = () => {
+const users = () => {
   api.addAsyncRequestTransform(requestTransform);
   const addUser = (userData) => api.post('register_user', toFormData(userData))
-  const getAllUser = (role) => api.post('user_list', toFormData({ role }))
+  const getUsersByRole = (role) => api.post('user_list', toFormData({ role }))
 
   return {
     addUser,
-    getAllUser
+    getUsersByRole
   }
 }
 
@@ -60,5 +60,5 @@ const category = () => {
 export default {
   auth,
   category,
-  customer
+  users
 };
