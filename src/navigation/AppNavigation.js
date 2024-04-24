@@ -21,7 +21,7 @@ import { Image } from 'react-native';
 import icons from '../assets';
 import { useSelector } from 'react-redux';
 import ManageListScreen from '../modules/Technical/ManageListScreen';
-import ManageListItemsScreen from '../modules/Technical/ManageListItemsScreen';
+import CategoryListScreen from '../modules/Technical/CategoryListScreen';
 import AddCategoryScreen from '../modules/Technical/AddCategoryScreen';
 import AddCustomerScreen from '../modules/Technical/AddCustomerScreen';
 import AddManagerScreen from '../modules/Technical/AddManagerScreen';
@@ -71,7 +71,7 @@ const ManageStack = () => {
       <Stack.Screen name="AddManagerScreen" component={AddManagerScreen} />
       <Stack.Screen name="AddWorkerScreen" component={AddWorkerScreen} />
       <Stack.Screen name="AddDispatcherScreen" component={AddDispatcherScreen} />
-      <Stack.Screen name="ManageListItemsScreen" component={ManageListItemsScreen} />
+      <Stack.Screen name="CategoryListScreen" component={CategoryListScreen} />
     </Stack.Navigator>
   );
 };
