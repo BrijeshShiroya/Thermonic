@@ -32,9 +32,13 @@ const category = () => {
   api.addAsyncRequestTransform(requestTransform);
   const categoryList = () => api.get('pro_category_list');
   const subCategoryList = () => api.get('pro_sub_category_list');
+  const deleteCategory = (id) => api.post('remove_category', toFormData({ cat_id: id }))
+  const deleteSubCategory = (id) => api.post('remove_sub_category', toFormData({ id }))
   return {
     categoryList,
-    subCategoryList
+    subCategoryList,
+    deleteCategory,
+    deleteSubCategory
   };
 }
 export default {

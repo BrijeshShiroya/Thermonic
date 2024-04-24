@@ -8,5 +8,5 @@ const resettable = resettableReducer('LOGOUT');
 
 export default combineReducers({
   auth: resettable(authReducer),
-  category: categoryReducer,
+  category: resettable(categoryReducer),
 });

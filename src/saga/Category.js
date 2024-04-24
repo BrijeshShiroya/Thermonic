@@ -29,3 +29,30 @@ export function* getAllSubCategory(api) {
     yield put(CategoryActions.subCategoryListFailure(error));
   }
 }
+
+
+export function* removeCategory(api, action) {
+  const response = yield call(api.deleteCategory, action?.id);
+  if (response?.data?.status && !response?.data?.error) {
+    yield put(
+      CategoryActions.categoryListSuccess(response?.data?.data),
+    );
+  } else {
+    const error = yield call(getError, response?.data);
+    Alert.alert(Strings.thermonic, error?.trim());
+    yield put(CategoryActions.categoryListFailure(error));
+  }
+}
+
+export function* removeSubCategory(api, action) {
+  const response = yield call(api.deleteSubCategory, action?.id);
+  if (response?.data?.status && !response?.data?.error) {
+    yield put(
+      CategoryActions.subCategoryListSuccess(response?.data?.data),
+    );
+  } else {
+    const error = yield call(getError, response?.data);
+    // Alert.alert(Strings.thermonic, error?.trim());
+    yield put(CategoryActions.categoryListFailure(error));
+  }
+}

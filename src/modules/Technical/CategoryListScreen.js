@@ -38,13 +38,21 @@ const CategoryListScreen = ({ navigation, route }) => {
         }
     }
 
+    const onDelete = (item) => {
+        if (title == 'Category') {
+            dispatch(CategoryTypes.deleteCategoryRequest(item?.id))
+        } else {
+            dispatch(CategoryTypes.deleteSubCategoryRequest(item?.id))
+        }
+    }
+
     return (
         <View style={styles.mainContainer}>
             <CustomHeader leftEnable onLeftPress={onBackPress} centerEnable={false} isTitle title={title} rightEnable onRightPress={onAddPress} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
                     <FlatList data={title == 'Category' ? category : subCategory} showsVerticalScrollIndicator={false}
-                        renderItem={({ item }) => <DropdownListItem title={title == 'Category' ? item?.category_name : item?.sub_category_name} />} />
+                        renderItem={({ item }) => <DropdownListItem title={title == 'Category' ? item?.category_name : item?.sub_category_name} onPress={() => onDelete(item)} />} />
                 </View>
             </CustomBackground>
         </View>
