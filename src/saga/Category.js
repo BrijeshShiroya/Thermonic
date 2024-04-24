@@ -56,3 +56,32 @@ export function* removeSubCategory(api, action) {
     yield put(CategoryActions.categoryListFailure(error));
   }
 }
+
+
+export function* addCategory(api, action) {
+  const response = yield call(api.addCategory, action?.categoryName);
+  if (response?.data?.status && !response?.data?.error) {
+    yield put(
+      CategoryActions.categoryListSuccess(response?.data?.data),
+    );
+    Alert.alert(Strings.thermonic, Strings.categoryAddedSuccess);
+  } else {
+    const error = yield call(getError, response?.data);
+    // Alert.alert(Strings.thermonic, error?.trim());
+    yield put(CategoryActions.categoryListFailure(error));
+  }
+}
+
+export function* addSubCategory(api, action) {
+  const response = yield call(api.addSubCategory, action?.subCategoryName);
+  if (response?.data?.status && !response?.data?.error) {
+    yield put(
+      CategoryActions.subCategoryListSuccess(response?.data?.data),
+    );
+    Alert.alert(Strings.thermonic, Strings.subCategoryAddedSuccess);
+  } else {
+    const error = yield call(getError, response?.data);
+    // Alert.alert(Strings.thermonic, error?.trim());
+    yield put(CategoryActions.categoryListFailure(error));
+  }
+}

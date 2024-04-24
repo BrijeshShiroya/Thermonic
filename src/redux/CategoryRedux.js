@@ -11,6 +11,8 @@ const { Types, Creators } = createActions({
   subCategoryListFailure: ['error'],
   deleteCategoryRequest: ['id'],
   deleteSubCategoryRequest: ['id'],
+  addCategoryRequest: ['categoryName'],
+  addSubCategoryRequest: ['subCategoryName'],
 });
 
 export const CategoryTypes = Types;
@@ -79,4 +81,6 @@ export const categoryReducer = createReducer(INITIAL_STATE, {
   [Types.SUB_CATEGORY_LIST_FAILURE]: subCategoryFailure,
   [Types.DELETE_CATEGORY_REQUEST]: request,
   [Types.DELETE_SUB_CATEGORY_REQUEST]: request,
+  [Types.ADD_CATEGORY_REQUEST]: request,
+  [Types.ADD_SUB_CATEGORY_REQUEST]: request,
 });

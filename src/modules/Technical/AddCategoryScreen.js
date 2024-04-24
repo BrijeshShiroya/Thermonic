@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Keyboard, Text, View } from 'react-native';
 import styles from './styles/AddCategoryScreenStyle';
-import { CustomBackground, CustomButton, CustomHeader, CustomTextInput } from '../../components';
+import { CustomBackground, CustomButton, CustomHeader, CustomTextInput, Loader } from '../../components';
 import strings from '../../constants/Strings';
+import { useDispatch, useSelector } from 'react-redux';
+import CategoryTypes from '../../redux/CategoryRedux';
+
 
 const AddCategoryScreen = ({ navigation, route }) => {
 
+    const dispatch = useDispatch();
+
     const title = route?.params?.categoryType == 1 ? 'Add Category' : 'Add Sub Category'
     const [categoryName, setCategoryName] = useState('')
+    const { fetching } = useSelector(state => state.category);
+
+    useEffect(() => {
+        if (!fetching) {
+            setCategoryName('')
+        }
+    }, [fetching])
 
     const onBackPress = () => {
         navigation.goBack();
     }
 
     const onAddPress = () => {
-        alert('onAddCategoryPress')
+        if (categoryName != '') {
+            Keyboard.dismiss();
+            route?.params?.categoryType == 1 ?
+                dispatch(CategoryTypes.addCategoryRequest(categoryName)) :
+                dispatch(CategoryTypes.addSubCategoryRequest(categoryName))
+        }
     }
 
     return (
@@ -37,6 +54,7 @@ const AddCategoryScreen = ({ navigation, route }) => {
                     onPress={onAddPress}
                 />
             </CustomBackground>
+            {fetching && <Loader />}
         </View>
     );
 };

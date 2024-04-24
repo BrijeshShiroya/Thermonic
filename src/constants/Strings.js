@@ -39,7 +39,9 @@ const strings = {
   inProgress: 'In Progress Orders',
   accepted: 'Accepted Orders',
   dispatched: 'Dispatched Orders',
-  pendingOrders: 'Pending Orders'
+  pendingOrders: 'Pending Orders',
+  categoryAddedSuccess: "Category Added",
+  subCategoryAddedSuccess: "Sub Category Added"
 };
 
 export default strings;
