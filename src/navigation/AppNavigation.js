@@ -193,11 +193,11 @@ const RootStackScreen = (props, ref) => {
   const [currentUserRole, setCurrentUserRole] = useState('')
 
   const loggedInUserRole = () => {
-    if (currentUserRole == UserType.customer) {
+    if (currentUserRole == UserType.client) {
       return <Stack.Screen name="CustomerTab" component={CustomerTabBar} />
     } else if (currentUserRole == UserType.owner) {
       return <Stack.Screen name="TechnicalTabBar" component={TechnicalTabBar} />
-    } else if (currentUserRole == UserType.production) {
+    } else if (currentUserRole == UserType.Worker) {
       return <Stack.Screen name="ProductionTabBar" component={ProductionTabBar} />
     } else {
       return <Stack.Screen name="ManagerTabBar" component={ManagerTabBar} />

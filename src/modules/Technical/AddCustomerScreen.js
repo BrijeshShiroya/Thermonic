@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import { CustomBackground, CustomButton, CustomHeader, CustomTextInput } from '../../components';
+import React, { useEffect, useState } from 'react';
+import { Alert, Platform, Text, View } from 'react-native';
+import { CustomBackground, CustomButton, CustomHeader, CustomTextInput, Loader } from '../../components';
 import strings from '../../constants/Strings';
 import styles from './styles/AddCustomerScreenStyle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useDispatch, useSelector } from 'react-redux';
+import UsersTypes from '../../redux/UsersRedux';
+import { UserType } from '../../services/Utils';
 
 const AddCustomerScreen = ({ navigation, route }) => {
+
+    const { fetching } = useSelector(state => state.users)
+
+    const dispatch = useDispatch()
 
     const [customerFName, setCustomerFName] = useState('')
     const [customerLName, setCustomerLName] = useState('')
@@ -20,7 +27,29 @@ const AddCustomerScreen = ({ navigation, route }) => {
     }
 
     const onAddPress = () => {
-        alert('On Add Customer Press')
+        if (customerFName != '' &&
+            customerLName != '' &&
+            customerPassword != '' &&
+            customerContact != '' &&
+            customerEmail != '' &&
+            customerCompany != '' &&
+            customerAddress != '') {
+            dispatch(UsersTypes.addUserRequest({
+                first_name: customerFName,
+                last_name: customerLName,
+                email: customerEmail,
+                mobile_no: customerContact,
+                password: customerPassword,
+                device_type: Platform.OS,
+                device_token: '1222',
+                company_name: customerCompany,
+                company_address: customerAddress,
+                role: UserType.client,
+                address: customerAddress
+            }, UserType.client))
+        } else {
+            Alert.alert(strings.thermonic, strings.fillAllDetails);
+        }
     }
 
     return (
@@ -86,8 +115,8 @@ const AddCustomerScreen = ({ navigation, route }) => {
                         onPress={onAddPress}
                     />
                 </KeyboardAwareScrollView>
-
             </CustomBackground>
+            {fetching && <Loader />}
         </View>
     );
 };

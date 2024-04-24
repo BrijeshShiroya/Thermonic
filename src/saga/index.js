@@ -6,7 +6,7 @@ import API from '../services/Api';
 import { login } from './Auth';
 import { getAllCategory, getAllSubCategory, removeCategory, removeSubCategory, addCategory, addSubCategory } from './Category';
 
-import { getUsers } from './Users';
+import { getUsers, AddUser } from './Users';
 import { UsersTypes } from '../redux/UsersRedux';
 // The API we use is only used from Sagas, so we create it here and pass along
 // to the sagas which need it.
@@ -24,5 +24,7 @@ export default function* rootSaga() {
     takeLatest(CategoryTypes.ADD_CATEGORY_REQUEST, addCategory, categoryApi),
     takeLatest(CategoryTypes.ADD_SUB_CATEGORY_REQUEST, addSubCategory, categoryApi),
     takeLatest(UsersTypes.USERS_LIST_REQUEST, getUsers, usersApi),
+    takeLatest(UsersTypes.ADD_USER_REQUEST, AddUser, usersApi),
+    takeLatest(UsersTypes.ADD_USER_SUCCESS, getUsers, usersApi),
   ]);
 }

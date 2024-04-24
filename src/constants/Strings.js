@@ -41,7 +41,9 @@ const strings = {
   dispatched: 'Dispatched Orders',
   pendingOrders: 'Pending Orders',
   categoryAddedSuccess: "Category Added",
-  subCategoryAddedSuccess: "Sub Category Added"
+  subCategoryAddedSuccess: "Sub Category Added",
+  customerAdded: "Customer Added",
+  fillAllDetails: 'Please fill all details'
 };
 
 export default strings;

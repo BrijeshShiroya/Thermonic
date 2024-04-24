@@ -4,8 +4,10 @@ import Immutable from 'seamless-immutable';
 /* ------------- Types and Action Creators ------------- */
 const { Types, Creators } = createActions({
   usersListRequest: ['role'],
-  usersListSuccess: ['data'],
+  usersListSuccess: ['data',],
   usersListFailure: ['error'],
+  addUserRequest: ['userData', 'role'],
+  addUserSuccess: ['role']
 });
 
 export const UsersTypes = Types;
@@ -27,6 +29,9 @@ export const UsersSelectors = {
 // request the data from an api
 export const request = state =>
   state.merge({ fetching: true, error: null });
+
+export const success = state =>
+  state.merge({ fetching: false, error: null });
 
 // successful api lookup
 export const usersSuccess = (state, action) => {
@@ -52,4 +57,6 @@ export const usersReducer = createReducer(INITIAL_STATE, {
   [Types.USERS_LIST_REQUEST]: request,
   [Types.USERS_LIST_SUCCESS]: usersSuccess,
   [Types.USERS_LIST_FAILURE]: usersFailure,
+  [Types.ADD_USER_REQUEST]: request,
+  [Types.ADD_USER_SUCCESS]: success,
 });
