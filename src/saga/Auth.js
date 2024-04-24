@@ -2,8 +2,11 @@ import { call, put } from 'redux-saga/effects';
 import AuthActions from '../redux/AuthRedux';
 import { Alert, Platform } from 'react-native';
 import { getError } from '../services/Utils';
-import { Strings } from '../constants';
+import { StorageKeys, Strings } from '../constants';
 import { apiConfig } from '../services/Utils';
+import { api } from '../services/Api';
+import AsyncStorage from '@react-native-community/async-storage';
+
 export function* login(api, action) {
   const response = yield call(api.login, {
     username: action?.email,
@@ -12,6 +15,7 @@ export function* login(api, action) {
     device_type: Platform.OS,
   });
   if (response?.data?.status && !response?.data?.error) {
+    AsyncStorage.setItem(StorageKeys.token, response?.data?.data?.['x-api-key']);
     yield put(
       AuthActions.authSuccess({ ...response?.data?.data } || null),
     );
