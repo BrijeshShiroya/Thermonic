@@ -5,8 +5,8 @@ import styles from './styles/ManageListScreenStyles';
 
 const ManageListScreen = ({ navigation }) => {
 
-    const navigateToScreen = (selectedItem) => {
-        navigation.navigate('CategoryListScreen', { manageItem: selectedItem })
+    const navigateToScreen = (screenName) => {
+        navigation.navigate(screenName)
     }
 
 
@@ -22,7 +22,7 @@ const ManageListScreen = ({ navigation }) => {
                 <View style={styles.innerContainer}>
                     <DropdownListItem title={'Category'} isRight onPress={() => onCategorySelect('Category')} />
                     <DropdownListItem title={'Sub Category'} isRight onPress={() => onCategorySelect('Sub Category')} />
-                    <DropdownListItem title={'Customer'} isRight onPress={() => navigateToScreen('Customer')} />
+                    <DropdownListItem title={'Customer'} isRight onPress={() => navigateToScreen('CustomerListScreen')} />
                     <DropdownListItem title={'Manager'} isRight onPress={() => navigateToScreen('Manager')} />
                     <DropdownListItem title={'Worker'} isRight onPress={() => navigateToScreen('Worker')} />
                     <DropdownListItem title={'Dispatcher'} isRight onPress={() => navigateToScreen('Dispatcher')} />

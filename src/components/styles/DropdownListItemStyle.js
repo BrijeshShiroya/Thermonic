@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
         paddingVertical: 6,
         borderBottomWidth: 1,
         borderBottomColor: Colors.filterSep,
-        justifyContent: 'center'
-
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     itemTitle: {
         fontFamily: Fonts.type.regular,
@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
     next: {
         position: 'absolute',
         right: 5,
+    },
+    bin: {
+        height: 24,
+        width: 24
     }
 });
 

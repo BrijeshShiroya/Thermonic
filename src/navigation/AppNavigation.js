@@ -22,6 +22,7 @@ import icons from '../assets';
 import { useSelector } from 'react-redux';
 import ManageListScreen from '../modules/Technical/ManageListScreen';
 import CategoryListScreen from '../modules/Technical/CategoryListScreen';
+import CustomerListScreen from '../modules/Technical/CustomerListScreen';
 import AddCategoryScreen from '../modules/Technical/AddCategoryScreen';
 import AddCustomerScreen from '../modules/Technical/AddCustomerScreen';
 import AddManagerScreen from '../modules/Technical/AddManagerScreen';
@@ -72,6 +73,7 @@ const ManageStack = () => {
       <Stack.Screen name="AddWorkerScreen" component={AddWorkerScreen} />
       <Stack.Screen name="AddDispatcherScreen" component={AddDispatcherScreen} />
       <Stack.Screen name="CategoryListScreen" component={CategoryListScreen} />
+      <Stack.Screen name="CustomerListScreen" component={CustomerListScreen} />
     </Stack.Navigator>
   );
 };

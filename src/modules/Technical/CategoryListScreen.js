@@ -52,7 +52,7 @@ const CategoryListScreen = ({ navigation, route }) => {
             <CustomBackground>
                 <View style={styles.innerContainer}>
                     <FlatList data={title == 'Category' ? category : subCategory} showsVerticalScrollIndicator={false}
-                        renderItem={({ item }) => <DropdownListItem title={title == 'Category' ? item?.category_name : item?.sub_category_name} onPress={() => onDelete(item)} />} />
+                        renderItem={({ item }) => <DropdownListItem title={title == 'Category' ? item?.category_name : item?.sub_category_name} isDeletable onDelete={() => onDelete(item)} />} />
                 </View>
             </CustomBackground>
         </View>

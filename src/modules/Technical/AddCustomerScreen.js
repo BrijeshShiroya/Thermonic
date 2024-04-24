@@ -7,14 +7,13 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 const AddCustomerScreen = ({ navigation, route }) => {
 
-    const [customerName, setCustomerName] = useState('')
-    const [customerUsername, setCustomerUsername] = useState('')
+    const [customerFName, setCustomerFName] = useState('')
+    const [customerLName, setCustomerLName] = useState('')
     const [customerPassword, setCustomerPassword] = useState('')
     const [customerContact, setCustomerContact] = useState('')
     const [customerEmail, setCustomerEmail] = useState('')
     const [customerCompany, setCustomerCompany] = useState('')
     const [customerAddress, setCustomerAddress] = useState('')
-    const [customerWebsite, setCustomerWebsite] = useState('')
     const [other, setOther] = useState('')
 
     const onBackPress = () => {
@@ -30,19 +29,27 @@ const AddCustomerScreen = ({ navigation, route }) => {
             <CustomHeader centerEnable={false} isTitle title={'Add Customer'} leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
                 <KeyboardAwareScrollView style={styles.innerContainer} showsVerticalScrollIndicator={false}>
-                    <Text style={styles.placeholder}>{strings.name}</Text>
+                    <Text style={styles.placeholder}>{strings.firstname}</Text>
                     <CustomTextInput
-                        value={customerName}
-                        placeholder={strings.name}
+                        value={customerFName}
+                        placeholder={strings.firstname}
                         containerStyle={styles.fieldContainer}
-                        onChangeText={text => setCustomerName(text)}
+                        onChangeText={text => setCustomerFName(text)}
                     />
-                    <Text style={styles.placeholder}>{strings.username}</Text>
+                    <Text style={styles.placeholder}>{strings.lastname}</Text>
                     <CustomTextInput
-                        value={customerUsername}
-                        placeholder={strings.username}
+                        value={customerLName}
+                        placeholder={strings.lastname}
                         containerStyle={styles.fieldContainer}
-                        onChangeText={text => setCustomerUsername(text)}
+                        onChangeText={text => setCustomerLName(text)}
+                    />
+                    <Text style={styles.placeholder}>{strings.email}</Text>
+                    <CustomTextInput
+                        value={customerEmail}
+                        placeholder={strings.email}
+                        keyboardType={'email-address'}
+                        containerStyle={styles.fieldContainer}
+                        onChangeText={text => setCustomerEmail(text)}
                     />
                     <Text style={styles.placeholder}>{strings.password}</Text>
                     <CustomTextInput
@@ -60,14 +67,6 @@ const AddCustomerScreen = ({ navigation, route }) => {
                         containerStyle={styles.fieldContainer}
                         onChangeText={text => setCustomerContact(text)}
                     />
-                    <Text style={styles.placeholder}>{strings.email}</Text>
-                    <CustomTextInput
-                        value={customerEmail}
-                        placeholder={strings.email}
-                        keyboardType={'email-address'}
-                        containerStyle={styles.fieldContainer}
-                        onChangeText={text => setCustomerEmail(text)}
-                    />
                     <Text style={styles.placeholder}>{strings.company}</Text>
                     <CustomTextInput
                         value={customerCompany}
@@ -81,13 +80,6 @@ const AddCustomerScreen = ({ navigation, route }) => {
                         placeholder={strings.Address}
                         containerStyle={styles.fieldContainer}
                         onChangeText={text => setCustomerAddress(text)}
-                    />
-                    <Text style={styles.placeholder}>{strings.website}</Text>
-                    <CustomTextInput
-                        value={customerWebsite}
-                        placeholder={strings.website}
-                        containerStyle={styles.fieldContainer}
-                        onChangeText={text => setCustomerWebsite(text)}
                     />
                     <Text style={styles.placeholder}>{strings.otherInfo}</Text>
                     <CustomTextInput
