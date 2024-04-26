@@ -6,7 +6,7 @@ const { Types, Creators } = createActions({
   usersListRequest: ['role'],
   usersListSuccess: ['data',],
   usersListFailure: ['error'],
-  addUserRequest: ['userData', 'role'],
+  addUserRequest: ['userData'],
   addUserSuccess: ['role']
 });
 

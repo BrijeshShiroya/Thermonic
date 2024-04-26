@@ -1,4 +1,5 @@
 import apisauce from 'apisauce';
+import { useDispatch } from 'react-redux';
 
 export const messages = {
   productAdded: 'Product added in cart successfully.',
@@ -20,6 +21,9 @@ export async function getError(response) {
   if (response?.message) {
     return response?.message;
   }
+  if (response?.error == 'Invalid API key ') {
+    return 'Something went wrong';
+  }
   if (['CONNECTION_ERROR', 'SERVER_ERROR'].includes(response?.message)) {
     return 'Server is not available';
   }
@@ -30,8 +34,8 @@ export const UserType = {
   client: 'client',
   owner: 'owner',
   manager: 'manager',
-  Worker: 'worker',
-  dispatcher: 'dispatcher'
+  worker: 'worker',
+  dispatch: 'dispatch'
 }
 
 export const CustomerOrderStatus = {

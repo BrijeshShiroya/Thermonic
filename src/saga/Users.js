@@ -3,6 +3,8 @@ import { call, put } from 'redux-saga/effects';
 import { Strings } from '../constants';
 import UsersActions from '../redux/UsersRedux';
 import { getError } from '../services/Utils';
+import { useNavigation } from '@react-navigation/native';
+
 
 export function* getUsers(api, action) {
   const response = yield call(api.getUsersByRole, action?.role);
@@ -21,7 +23,7 @@ export function* AddUser(api, action) {
   const response = yield call(api.addUser, action?.userData);
   if (response?.data?.status && !response?.data?.error) {
     yield put(
-      UsersActions.addUserSuccess(action?.role),
+      UsersActions.addUserSuccess(action?.userData?.role),
     );
     Alert.alert(Strings.thermonic, Strings.customerAdded);
   } else {

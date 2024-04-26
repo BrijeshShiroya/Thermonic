@@ -1,20 +1,25 @@
 import { StyleSheet } from 'react-native';
 import {
     ApplicationStyles,
-    scale,
     verticalScale
 } from '../../../theme';
 
 const styles = StyleSheet.create({
     ...ApplicationStyles.screen,
     container: {
-        flex: 1,
-        paddingTop: verticalScale(8),
+        paddingTop: verticalScale(20),
         paddingHorizontal: verticalScale(16),
+        justifyContent: 'center'
     },
     innerContainer: {
-        paddingVertical: verticalScale(20),
-        paddingHorizontal: scale(20)
+        flex: 1,
+    },
+    field: {
+        marginBottom: verticalScale(10)
+    },
+    logoutButton: {
+        marginVertical: verticalScale(30),
+        marginHorizontal: verticalScale(16),
     }
 });
 

@@ -45,7 +45,6 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.mainContainer}>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <Text>{`Selected User: ${userType}`}</Text>
           <Text style={styles.placeholder}>{strings.email}</Text>
           <CustomTextInput
             value={email}
@@ -68,11 +67,6 @@ const LoginScreen = ({ navigation }) => {
             style={styles.loginButton}
             onPress={onLoginPress}
           />
-          <Text onPress={() => setUserType(UserType.customer)}>Customer</Text>
-          <Text onPress={() => setUserType(UserType.owner)}>Owner</Text>
-          <Text onPress={() => setUserType(UserType.manager)}>Manager</Text>
-          <Text onPress={() => setUserType(UserType.production)}>Production</Text>
-          <Text onPress={() => setUserType(UserType.dispatcher)}>Dispatcher</Text>
         </ScrollView>
       </View>
       {fetching && <Loader />}

@@ -197,7 +197,7 @@ const RootStackScreen = (props, ref) => {
       return <Stack.Screen name="CustomerTab" component={CustomerTabBar} />
     } else if (currentUserRole == UserType.owner) {
       return <Stack.Screen name="TechnicalTabBar" component={TechnicalTabBar} />
-    } else if (currentUserRole == UserType.Worker) {
+    } else if (currentUserRole == UserType.worker) {
       return <Stack.Screen name="ProductionTabBar" component={ProductionTabBar} />
     } else {
       return <Stack.Screen name="ManagerTabBar" component={ManagerTabBar} />

@@ -12,6 +12,22 @@ const AddCustomerScreen = ({ navigation, route }) => {
 
     const { fetching } = useSelector(state => state.users)
 
+    const type = route?.params?.type
+
+    const getTitle = () => {
+        if (type == UserType.client) {
+            return 'Add Customer'
+        } else if (type == UserType.worker) {
+            return 'Add Worker'
+        } else if (type == UserType.dispatch) {
+            return 'Add Dispatcher'
+        } else if (type == UserType.manager) {
+            return 'Add Manager'
+        } else {
+            return "Add Owner"
+        }
+    }
+
     const dispatch = useDispatch()
 
     const [customerFName, setCustomerFName] = useState('')
@@ -44,9 +60,9 @@ const AddCustomerScreen = ({ navigation, route }) => {
                 device_token: '1222',
                 company_name: customerCompany,
                 company_address: customerAddress,
-                role: UserType.client,
+                role: type,
                 address: customerAddress
-            }, UserType.client))
+            }))
         } else {
             Alert.alert(strings.thermonic, strings.fillAllDetails);
         }
@@ -54,7 +70,7 @@ const AddCustomerScreen = ({ navigation, route }) => {
 
     return (
         <View style={styles.mainContainer}>
-            <CustomHeader centerEnable={false} isTitle title={'Add Customer'} leftEnable onLeftPress={onBackPress} />
+            <CustomHeader centerEnable={false} isTitle title={getTitle()} leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
                 <KeyboardAwareScrollView style={styles.innerContainer} showsVerticalScrollIndicator={false}>
                     <Text style={styles.placeholder}>{strings.firstname}</Text>
