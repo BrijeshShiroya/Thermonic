@@ -6,11 +6,11 @@ import { usersReducer } from './UsersRedux';
 import { orderReducer } from './OrderRedux';
 
 
-const resettable = resettableReducer('LOGOUT');
+const resettable = resettableReducer('LOGOUT_SUCCESS');
 
 export default combineReducers({
   auth: authReducer,
-  category: categoryReducer,
-  users: usersReducer,
-  order: orderReducer,
+  category: resettable(categoryReducer),
+  users: resettable(usersReducer),
+  order: resettable(orderReducer),
 });

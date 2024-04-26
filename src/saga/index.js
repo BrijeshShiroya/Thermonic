@@ -20,6 +20,8 @@ const orderApi = API.order()
 export default function* rootSaga() {
   yield all([
     takeLatest(AuthTypes.AUTH_REQUEST, login, authApi),
+    takeLatest(AuthTypes.AUTH_SUCCESS, getAllCategory, categoryApi),
+    takeLatest(AuthTypes.AUTH_SUCCESS, getAllSubCategory, categoryApi),
     takeLatest(CategoryTypes.CATEGORY_LIST_REQUEST, getAllCategory, categoryApi),
     takeLatest(CategoryTypes.SUB_CATEGORY_LIST_REQUEST, getAllSubCategory, categoryApi),
     takeLatest(CategoryTypes.DELETE_CATEGORY_REQUEST, removeCategory, categoryApi),

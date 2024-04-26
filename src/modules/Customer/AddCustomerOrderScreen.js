@@ -28,6 +28,8 @@ const AddCustomerOrderScreen = ({ navigation }) => {
     const [notes, setNotes] = useState('')
     const { user } = useSelector(state => state.auth)
     const { fetching } = useSelector(state => state.order)
+    const { category } = useSelector(state => state.category)
+    const filteredCategory = category?.map(cate => cate?.category_name)
 
     useEffect(() => {
         setProductName(`${product}-${subCategories?.join('-')}`)
@@ -76,7 +78,7 @@ const AddCustomerOrderScreen = ({ navigation }) => {
                         placeholder={strings.product}
                         selectedValue={product}
                         setSelectedValue={(text) => setProduct(text)}
-                        dataList={Products}
+                        dataList={filteredCategory}
                         onSelectItem={(item) => {
                             setProduct(item)
                         }} />

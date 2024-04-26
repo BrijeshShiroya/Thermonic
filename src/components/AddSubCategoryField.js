@@ -1,23 +1,19 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import CustomDropdown from './CustomDropdown';
 import styles from './styles/AddSubCategoryFieldStyle';
+import { useSelector } from 'react-redux';
 
-const DATA = [
-    '500ML',
-    '700ML',
-    '800ML',
-    'Sub 1',
-    'Sub 2'
-]
 
 const AddSubCategoryField = ({
     onDeletePress,
     title,
     onSelectPress
 }) => {
-    const [subCategory, setSubCategory] = useState('')
+    const { subCategory } = useSelector(state => state.category)
+
+    const filteredSubCategory = subCategory?.map(cate => cate?.sub_category_name)
 
     const onSelect = (item) => {
         onSelectPress(item)
@@ -28,7 +24,7 @@ const AddSubCategoryField = ({
             <CustomDropdown
                 selectedValue={title}
                 setSelectedValue={() => { }}
-                dataList={DATA}
+                dataList={filteredSubCategory}
                 isDeletable
                 onSelectItem={(item) => {
                     onSelect(item)
