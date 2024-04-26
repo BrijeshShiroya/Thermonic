@@ -26,7 +26,6 @@ export function* login(api, action) {
 
 export function* logout(api) {
   const { user } = yield select(state => state.auth);
-  console.log({ user })
   const response = yield call(api.logout, user?.id);
   if (response?.data?.status && !response?.data?.error) {
     AsyncStorage.removeItem(StorageKeys.token);
