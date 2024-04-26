@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 import {
     ApplicationStyles,
+    Colors,
+    Fonts,
     verticalScale
 } from '../../../theme';
 
@@ -20,6 +22,12 @@ const styles = StyleSheet.create({
     logoutButton: {
         marginVertical: verticalScale(30),
         marginHorizontal: verticalScale(16),
+    },
+    title: {
+        fontFamily: Fonts.type.semiBold,
+        fontSize: Fonts.size.h6,
+        alignSelf: "center",
+        marginBottom: 20
     }
 });
 

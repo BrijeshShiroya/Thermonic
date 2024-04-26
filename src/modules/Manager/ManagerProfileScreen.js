@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import styles from './styles/ManagerHomeScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,6 +26,7 @@ const ManagerProfileScreen = ({ navigation }) => {
             <CustomHeader />
             <CustomBackground>
                 <View style={[styles.container, styles.innerContainer]}>
+                    <Text style={styles.title}>{`You are manager`}</Text>
                     <ProfileField style={styles.field} placeholder={'Email'} title={user?.email} />
                     <ProfileField style={styles.field} placeholder={'Name'} title={`${user?.first_name} ${user?.last_name}`} />
                     <ProfileField style={styles.field} placeholder={'Company Name'} title={user?.company_name || 'Thermonic'} />

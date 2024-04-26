@@ -95,13 +95,13 @@ const PendingOrderListScreen = ({ navigation, route }) => {
             <CustomHeader leftEnable centerEnable={false} onLeftPress={onBackPress} isTitle title={strings.pendingOrders} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    <FlatList
+                    {/* <FlatList
                         contentContainerStyle={styles.orderList}
-                        showsVerticalScrollIndicator={false}
+                        showsVerticalScrollIndicator={falske}
                         data={DATA}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <CustomerOrder item={item} />}
-                    />
+                    /> */}
                 </View>
             </CustomBackground>
         </View>

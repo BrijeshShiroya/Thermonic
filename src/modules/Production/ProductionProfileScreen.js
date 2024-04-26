@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import strings from '../../constants/Strings';
@@ -27,6 +27,7 @@ const ProductionProfileScreen = ({ navigation }) => {
             <CustomHeader />
             <CustomBackground>
                 <View style={[styles.container, styles.innerContainer]}>
+                    <Text style={styles.title}>{`You are worker`}</Text>
                     <ProfileField style={styles.field} placeholder={'Email'} title={user?.email} />
                     <ProfileField style={styles.field} placeholder={'Name'} title={`${user?.first_name} ${user?.last_name}`} />
                     <ProfileField style={styles.field} placeholder={'Company Name'} title={user?.company_name || 'Thermonic'} />

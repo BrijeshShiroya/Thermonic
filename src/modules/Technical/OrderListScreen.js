@@ -95,13 +95,13 @@ const OrderListScreen = ({ navigation, route }) => {
             <CustomHeader leftEnable centerEnable={false} onLeftPress={onBackPress} isTitle title={getType()} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    <FlatList
+                    {/* <FlatList
                         contentContainerStyle={styles.orderList}
                         showsVerticalScrollIndicator={false}
                         data={DATA}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <CustomerOrder item={item} />}
-                    />
+                    /> */}
                 </View>
             </CustomBackground>
         </View>

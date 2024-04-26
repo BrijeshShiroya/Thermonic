@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import strings from '../../constants/Strings';
@@ -25,6 +25,7 @@ const CustomerProfileScreen = ({ navigation }) => {
             <CustomHeader />
             <CustomBackground>
                 <View style={[styles.container, styles.innerContainer]}>
+                    <Text style={styles.title}>{`You are customer`}</Text>
                     <ProfileField style={styles.field} placeholder={'Email'} title={'brijesh@yopmail.com'} />
                     <ProfileField style={styles.field} placeholder={'Name'} title={'Brijesh Shiroya'} />
                     <ProfileField style={styles.field} placeholder={'Company Name'} title={'Thermonic Sensor india private limited'} />
