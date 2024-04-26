@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: scale(20)
     },
     orderList: {
-        paddingTop: 10
+        paddingTop: 15,
+        paddingBottom: 30
     }
 });
 

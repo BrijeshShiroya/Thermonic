@@ -99,7 +99,7 @@ const CustomerHomeScreen = ({ navigation }) => {
                     <CustomSearchbar />
                     <FlatList
                         showsVerticalScrollIndicator={false}
-                        style={styles.orderList}
+                        contentContainerStyle={styles.orderList}
                         data={order}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <CustomerOrder item={item} />}
