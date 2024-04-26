@@ -22,9 +22,11 @@ const toFormData = (params) => {
 
 const auth = () => {
   const login = credentials => api.post('login', toFormData(credentials));
+  const logout = id => api.get(`logout/${id}`);
 
   return {
     login,
+    logout
   };
 };
 

@@ -3,7 +3,7 @@ import { AuthTypes } from '../redux/AuthRedux';
 import { CategoryTypes } from '../redux/CategoryRedux';
 
 import API from '../services/Api';
-import { login } from './Auth';
+import { login, logout } from './Auth';
 import { getAllCategory, getAllSubCategory, removeCategory, removeSubCategory, addCategory, addSubCategory } from './Category';
 
 import { getUsers, AddUser } from './Users';
@@ -26,5 +26,7 @@ export default function* rootSaga() {
     takeLatest(UsersTypes.USERS_LIST_REQUEST, getUsers, usersApi),
     takeLatest(UsersTypes.ADD_USER_REQUEST, AddUser, usersApi),
     takeLatest(UsersTypes.ADD_USER_SUCCESS, getUsers, usersApi),
+    takeLatest(AuthTypes.LOGOUT_REQUEST, logout, authApi),
   ]);
+
 }

@@ -6,6 +6,8 @@ const { Types, Creators } = createActions({
   authRequest: ['email', 'password'],
   authSuccess: ['data'],
   authFailure: ['error'],
+  logoutRequest: [],
+  logoutSuccess: [],
 });
 
 export const AuthTypes = Types;
@@ -44,10 +46,15 @@ export const failure = (state, action) => {
   return state.merge({ fetching: false, error: error?.trim() });
 };
 
+export const reset = (state) => {
+  return state.merge({ ...INITIAL_STATE })
+}
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const authReducer = createReducer(INITIAL_STATE, {
   [Types.AUTH_REQUEST]: request,
   [Types.AUTH_SUCCESS]: success,
   [Types.AUTH_FAILURE]: failure,
+  [Types.LOGOUT_REQUEST]: request,
+  [Types.LOGOUT_SUCCESS]: reset
 });

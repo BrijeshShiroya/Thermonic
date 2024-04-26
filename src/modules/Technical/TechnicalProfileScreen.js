@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import strings from '../../constants/Strings';
 import styles from './styles/TechnicalProfileScreenStyles';
+import AuthTypes from '../../redux/AuthRedux';
 
 
 const TechnicalProfileScreen = ({ navigation }) => {
@@ -17,7 +18,7 @@ const TechnicalProfileScreen = ({ navigation }) => {
             {
                 text: strings.logout,
                 style: 'destructive',
-                onPress: () => dispatch({ type: 'LOGOUT' }),
+                onPress: () => dispatch(AuthTypes.logoutRequest())
             },
         ]);
     }

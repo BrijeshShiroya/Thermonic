@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import strings from '../../constants/Strings';
 import styles from './styles/CustomerProfileScreenStyles';
+import AuthTypes from '../../redux/AuthRedux';
+
 
 const CustomerProfileScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -14,7 +16,7 @@ const CustomerProfileScreen = ({ navigation }) => {
             {
                 text: strings.logout,
                 style: 'destructive',
-                onPress: () => dispatch({ type: 'LOGOUT' }),
+                onPress: () => dispatch(AuthTypes.logoutRequest())
             },
         ]);
     }

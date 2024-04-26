@@ -4,6 +4,7 @@ import styles from './styles/ManagerHomeScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import strings from '../../constants/Strings';
+import AuthTypes from '../../redux/AuthRedux';
 
 const ManagerProfileScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const ManagerProfileScreen = ({ navigation }) => {
             {
                 text: strings.logout,
                 style: 'destructive',
-                onPress: () => dispatch({ type: 'LOGOUT' }),
+                onPress: () => dispatch(AuthTypes.logoutRequest())
             },
         ]);
     }

@@ -8,7 +8,7 @@ import { usersReducer } from './UsersRedux';
 const resettable = resettableReducer('LOGOUT');
 
 export default combineReducers({
-  auth: resettable(authReducer),
-  category: resettable(categoryReducer),
-  users: resettable(usersReducer),
+  auth: authReducer,
+  category: categoryReducer,
+  users: usersReducer,
 });
