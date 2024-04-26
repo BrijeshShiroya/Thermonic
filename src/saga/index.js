@@ -32,5 +32,6 @@ export default function* rootSaga() {
     takeLatest(AuthTypes.LOGOUT_REQUEST, logout, authApi),
     takeLatest(OrderTypes.ORDER_REQUEST, getOrderList, orderApi),
     takeLatest(OrderTypes.ADD_ORDER_REQUEST, addOrder, orderApi),
+    takeLatest(OrderTypes.ADD_ORDER_SUCCESS, getOrderList, orderApi),
   ]);
 }

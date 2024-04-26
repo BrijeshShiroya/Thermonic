@@ -7,7 +7,7 @@ const { Types, Creators } = createActions({
   orderSuccess: ['data'],
   orderFailure: ['error'],
   addOrderRequest: ['orderData'],
-  addOrderSuccess: []
+  addOrderSuccess: ['id', 'status']
 });
 
 export const OrderTypes = Types;
