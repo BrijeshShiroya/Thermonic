@@ -45,7 +45,20 @@ const styles = StyleSheet.create({
         color: Colors.darkGray,
         fontFamily: Fonts.type.regular,
         fontSize: Fonts.size.medium,
-    }
+    },
+    addCategoryButton: {
+        marginTop: verticalScale(30),
+        margin: scale(20),
+    },
+    productname: {
+        fontFamily: Fonts.type.semiBold,
+        color: Colors.textDark,
+        fontSize: Fonts.size.regular,
+        marginBottom: 10
+    },
+    fieldContainer: {
+        marginBottom: 10
+    },
 });
 
 export default styles;

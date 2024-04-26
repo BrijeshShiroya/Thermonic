@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, View } from 'react-native';
 import styles from './styles/CustomerHomeScreenStyles';
-import { CustomBackground, CustomHeader, CustomSearchbar, CustomerOrder } from '../../components';
-import { CustomerOrderStatus } from '../../services/Utils';
+import { CustomBackground, CustomHeader, CustomSearchbar, CustomerOrder, Loader } from '../../components';
+import { CustomerOrderStatus, OrderStatus } from '../../services/Utils';
+import { useDispatch, useSelector } from 'react-redux';
+import OrderTypes from '../../redux/OrderRedux';
+
 
 const CustomerHomeScreen = ({ navigation }) => {
 
@@ -72,8 +75,20 @@ const CustomerHomeScreen = ({ navigation }) => {
         },
     ];
 
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state?.auth)
+    const { order, fetching } = useSelector(state => state?.order)
+
+    useEffect(() => {
+        dispatch(OrderTypes.orderRequest(user.id, OrderStatus.pending))
+    }, [])
+
     const onAddOrderPress = () => {
         navigation.navigate('AddCustomerOrderScreen')
+    }
+
+    const onRefresh = () => {
+        dispatch(OrderTypes.orderRequest(user.id, OrderStatus.pending))
     }
 
     return (
@@ -85,12 +100,15 @@ const CustomerHomeScreen = ({ navigation }) => {
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         style={styles.orderList}
-                        data={DATA}
+                        data={order}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <CustomerOrder item={item} />}
+                        onRefresh={onRefresh}
+                        refreshing={fetching}
                     />
                 </View>
             </CustomBackground>
+            {fetching && <Loader />}
         </View>
     );
 };

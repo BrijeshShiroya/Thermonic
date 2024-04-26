@@ -1,35 +1,37 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, Image } from 'react-native';
-import { Colors } from '../theme';
-import styles from './styles/AddSubCategoryFieldStyle';
-import icons from '../assets';
-import CustomTextInput from './CustomTextInput';
-import strings from '../constants/Strings';
+import { View } from 'react-native';
 import CustomDropdown from './CustomDropdown';
+import styles from './styles/AddSubCategoryFieldStyle';
 
-const SubCategories = [
-    '7mm',
-    'PST',
-    '8mm',
-    '1/2BSP'
+const DATA = [
+    '500ML',
+    '700ML',
+    '800ML',
+    'Sub 1',
+    'Sub 2'
 ]
 
 const AddSubCategoryField = ({
     onDeletePress,
-    title
+    title,
+    onSelectPress
 }) => {
     const [subCategory, setSubCategory] = useState('')
+
+    const onSelect = (item) => {
+        onSelectPress(item)
+    }
 
     return (
         <View style={styles.container}>
             <CustomDropdown
-                selectedValue={subCategory}
-                setSelectedValue={setSubCategory}
-                dataList={SubCategories}
+                selectedValue={title}
+                setSelectedValue={() => { }}
+                dataList={DATA}
                 isDeletable
                 onSelectItem={(item) => {
-                    setSubCategory(item)
+                    onSelect(item)
                 }}
                 onDeletePress={onDeletePress}
             />
@@ -38,7 +40,9 @@ const AddSubCategoryField = ({
 };
 
 AddSubCategoryField.propTypes = {
+    title: PropTypes.string,
     onDeletePress: PropTypes.func,
+    onSelectPress: PropTypes.func,
 };
 
 export default AddSubCategoryField;

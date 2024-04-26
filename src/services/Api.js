@@ -41,6 +41,16 @@ const users = () => {
   }
 }
 
+const order = () => {
+  api.addAsyncRequestTransform(requestTransform);
+  const orderList = (data) => api.post('order_list_client', toFormData(data))
+  const addOrder = (orderData) => api.post('add_order', toFormData(orderData))
+  return {
+    orderList,
+    addOrder
+  }
+}
+
 const category = () => {
   api.addAsyncRequestTransform(requestTransform);
   const categoryList = () => api.get('pro_category_list');
@@ -62,5 +72,6 @@ const category = () => {
 export default {
   auth,
   category,
-  users
+  users,
+  order
 };

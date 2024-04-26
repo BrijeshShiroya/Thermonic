@@ -38,6 +38,10 @@ export const UserType = {
   dispatch: 'dispatch'
 }
 
+export const OrderStatus = {
+  pending: 'pending'
+}
+
 export const CustomerOrderStatus = {
   accepted: "Accepted",
   dispatched: "Dispatched"

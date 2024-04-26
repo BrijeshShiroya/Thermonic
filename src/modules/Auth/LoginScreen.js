@@ -21,7 +21,7 @@ import { UserType } from '../../services/Utils'
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('shiroya0007@hotmail.com');
+  const [email, setEmail] = useState('customer@gmail.com');//shiroya0007@hotmail.com
   const [password, setPassword] = useState('123456');
   const [secureTextEntry, setSecureTextEntry] = useState(true)
   const { fetching } = useSelector(state => state.auth);
