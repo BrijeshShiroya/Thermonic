@@ -7,14 +7,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 6,
         borderBottomWidth: 1,
-        borderBottomColor: Colors.filterSep,
+        borderBottomColor: Colors.itemSeparator,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
     itemTitle: {
-        fontFamily: Fonts.type.regular,
+        fontFamily: Fonts.type.semiBold,
         fontSize: Fonts.size.regular,
-        color: Colors.textDark
+        color: Colors.darkBlue
     },
     next: {
         position: 'absolute',

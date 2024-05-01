@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     logoutButton: {
         marginVertical: verticalScale(30),
         marginHorizontal: verticalScale(16),
+    },
+    itemContainer: {
+        marginVertical: 15
     }
 });
 

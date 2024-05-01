@@ -12,6 +12,7 @@ import reduxStore from './redux/Store';
 import RootContainer from './modules/RootContainer';
 import SplashScreen from 'react-native-splash-screen';
 import "react-native-devsettings";
+import { SheetProvider } from 'react-native-actions-sheet';
 
 
 const App = () => {
@@ -22,7 +23,9 @@ const App = () => {
   return (
     <Provider store={reduxStore.store}>
       <PersistGate loading={null} persistor={reduxStore.persistor}>
-        <RootContainer />
+        <SheetProvider>
+          <RootContainer />
+        </SheetProvider>
       </PersistGate>
     </Provider>
   );

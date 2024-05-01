@@ -10,6 +10,7 @@ import ProfileField from './ProfileField'
 import DropdownListItem from './DropdownListItem'
 import CustomDropdown from './CustomDropdown'
 import AddSubCategoryField from './AddSubCategoryField';
+import OptionsActionSheet from './OptionsActionSheet';
 
 export {
     CustomTextInput,
@@ -23,5 +24,6 @@ export {
     ProfileField,
     DropdownListItem,
     CustomDropdown,
-    AddSubCategoryField
+    AddSubCategoryField,
+    OptionsActionSheet
 }

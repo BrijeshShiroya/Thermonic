@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
-import { FlatList, View } from 'react-native';
+import React, { createRef, useEffect, useState } from 'react';
+import { FlatList, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { CustomBackground, CustomHeader, DropdownListItem } from '../../components';
+import { CustomBackground, CustomHeader, DropdownListItem, OptionsActionSheet } from '../../components';
 import CategoryTypes from '../../redux/CategoryRedux';
 import styles from './styles/CategoryListScreenStyles';
+import { SheetManager } from 'react-native-actions-sheet';
 
 
 const CategoryListScreen = ({ navigation, route }) => {
     const dispatch = useDispatch();
-
     const title = route?.params?.manageItem;
+
+    const [selected, setSelected] = useState()
 
     useEffect(() => {
         title == "Category" ? dispatch(CategoryTypes.categoryListRequest()) : dispatch(CategoryTypes.subCategoryListRequest())
@@ -38,12 +40,28 @@ const CategoryListScreen = ({ navigation, route }) => {
         }
     }
 
-    const onDelete = (item) => {
-        if (title == 'Category') {
-            dispatch(CategoryTypes.deleteCategoryRequest(item?.id))
+    const openActionSheet = (item) => {
+        SheetManager.show('categoryOption', { payload: item })
+    }
+
+    const onOptionPress = (item) => {
+        if (item == 'Delete') {
+            if (title == 'Category') {
+                dispatch(CategoryTypes.deleteCategoryRequest(selected?.id))
+            } else {
+                dispatch(CategoryTypes.deleteSubCategoryRequest(selected?.id))
+            }
+            SheetManager.hide('categoryOption')
+            setSelected()
         } else {
-            dispatch(CategoryTypes.deleteSubCategoryRequest(item?.id))
+            SheetManager.hide('categoryOption')
+            setSelected()
         }
+
+    }
+
+    const onBeforeShow = (data) => {
+        setSelected(data)
     }
 
     return (
@@ -52,8 +70,9 @@ const CategoryListScreen = ({ navigation, route }) => {
             <CustomBackground>
                 <View style={styles.innerContainer}>
                     <FlatList data={title == 'Category' ? category : subCategory} showsVerticalScrollIndicator={false}
-                        renderItem={({ item }) => <DropdownListItem title={title == 'Category' ? item?.category_name : item?.sub_category_name} isDeletable onDelete={() => onDelete(item)} />} />
+                        renderItem={({ item }) => <DropdownListItem containerStyle={styles.itemContainer} title={title == 'Category' ? item?.category_name : item?.sub_category_name} isOption onOptionPress={() => openActionSheet(item)} />} />
                 </View>
+                <OptionsActionSheet id={'categoryOption'} options={['Delete', 'Cancel']} onBeforeShow={onBeforeShow} onOptionPress={(item) => onOptionPress(item)} />
             </CustomBackground>
         </View>
     );

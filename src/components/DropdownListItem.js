@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles/DropdownListItemStyle';
 import icons from '../assets';
+import { Colors } from '../theme';
 
-const DropdownListItem = ({ title, containerStyle, onPress, isRight = false, isDeletable = false, onDelete = () => { } }) => {
+const DropdownListItem = ({ title, containerStyle, onPress, isRight = false, isOption = false, onOptionPress = () => { } }) => {
     return (
         <TouchableOpacity style={[styles.container, containerStyle]} onPress={onPress}>
             <Text style={styles.itemTitle}>{title}</Text>
-            {isRight && <Image style={styles.next} source={icons.next} />}
-            {isDeletable && <TouchableOpacity onPress={onDelete}>
-                <Image style={styles.bin} source={icons.bin} />
+            {isRight && <Image style={styles.next} tintColor={Colors.darkBlue} source={icons.next} />}
+            {isOption && <TouchableOpacity onPress={onOptionPress}>
+                <Image style={styles.bin} tintColor={Colors.darkBlue} source={icons.options} />
             </TouchableOpacity>}
         </TouchableOpacity>
     );
@@ -21,8 +22,8 @@ DropdownListItem.propTypes = {
     containerStyle: PropTypes.object,
     isRight: PropTypes.bool,
     onPress: PropTypes.func,
-    isDeletable: PropTypes.bool,
-    onDelete: PropTypes.func,
+    isOption: PropTypes.bool,
+    onOptionPress: PropTypes.func,
 };
 
 export default DropdownListItem;

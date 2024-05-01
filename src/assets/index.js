@@ -14,6 +14,7 @@ const icons = {
     next: require('./next.png'),
     remove: require('./remove.png'),
     bin: require('./bin.png'),
+    options: require('./options.png'),
 };
 
 export default icons;
