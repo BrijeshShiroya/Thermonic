@@ -6,15 +6,8 @@ import styles from './styles/AddCustomerOrderScreenStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderTypes from '../../redux/OrderRedux';
 import { UserType } from '../../services/Utils';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-
-const Products = [
-    'BSP200',
-    'BSP600',
-    'BSP900',
-    'bottel2',
-    'BSP800',
-]
 
 const AddCustomerOrderScreen = ({ navigation }) => {
 
@@ -72,54 +65,56 @@ const AddCustomerOrderScreen = ({ navigation }) => {
         <View style={styles.mainContainer}>
             <CustomHeader leftEnable onLeftPress={onBackPress} />
             <CustomBackground>
-                <View style={styles.innerContainer}>
-                    <Text style={styles.productname}>{productName}</Text>
-                    <CustomDropdown
-                        placeholder={strings.product}
-                        selectedValue={product}
-                        setSelectedValue={(text) => setProduct(text)}
-                        dataList={filteredCategory}
-                        onSelectItem={(item) => {
-                            setProduct(item)
-                        }} />
-                    {subCategories.length > 0 && <Text style={styles.subCategoryTitle}>{strings.subCategories}</Text>}
-                    <FlatList extraData={subCategories} data={subCategories} renderItem={({ item, index }) =>
-                        <AddSubCategoryField
-                            index={index}
-                            title={item}
-                            onDeletePress={() => onDelete(index)}
-                            onSelectPress={(item) => onSelectSubCategory(item, index)}
-                        />}
-                    />
-                    <Text onPress={addSubCategory} style={styles.addSubcategoryTitle}>{strings.addSubCategories}</Text>
-                    <Text style={styles.placeholder}>{strings.quantity}</Text>
-                    <CustomTextInput
-                        value={quantity}
-                        keyboardType='number-pad'
-                        placeholder={strings.quantity}
-                        containerStyle={styles.fieldContainer}
-                        onChangeText={text => setQuantity(text)}
-                    />
-                    <Text style={styles.placeholder}>{strings.remark}</Text>
-                    <CustomTextInput
-                        value={remark}
-                        placeholder={strings.remark}
-                        containerStyle={styles.fieldContainer}
-                        onChangeText={text => setRemark(text)}
-                    />
-                    <Text style={styles.placeholder}>{strings.notes}</Text>
-                    <CustomTextInput
-                        value={notes}
-                        placeholder={strings.notes}
-                        containerStyle={styles.fieldContainer}
-                        onChangeText={text => setNotes(text)}
-                    />
-                    <CustomButton
-                        title={strings.add}
-                        style={styles.addCategoryButton}
-                        onPress={onAddPress}
-                    />
-                </View>
+                <KeyboardAwareScrollView enableOnAndroid>
+                    <View style={styles.innerContainer}>
+                        <Text style={styles.productname}>{productName}</Text>
+                        <CustomDropdown
+                            placeholder={strings.product}
+                            selectedValue={product}
+                            setSelectedValue={(text) => setProduct(text)}
+                            dataList={filteredCategory}
+                            onSelectItem={(item) => {
+                                setProduct(item)
+                            }} />
+                        {subCategories.length > 0 && <Text style={styles.subCategoryTitle}>{strings.subCategories}</Text>}
+                        <FlatList extraData={subCategories} data={subCategories} renderItem={({ item, index }) =>
+                            <AddSubCategoryField
+                                index={index}
+                                title={item}
+                                onDeletePress={() => onDelete(index)}
+                                onSelectPress={(item) => onSelectSubCategory(item, index)}
+                            />}
+                        />
+                        <Text onPress={addSubCategory} style={styles.addSubcategoryTitle}>{strings.addSubCategories}</Text>
+                        <Text style={styles.placeholder}>{strings.quantity}</Text>
+                        <CustomTextInput
+                            value={quantity}
+                            keyboardType='number-pad'
+                            placeholder={strings.quantity}
+                            containerStyle={styles.fieldContainer}
+                            onChangeText={text => setQuantity(text)}
+                        />
+                        <Text style={styles.placeholder}>{strings.remark}</Text>
+                        <CustomTextInput
+                            value={remark}
+                            placeholder={strings.remark}
+                            containerStyle={styles.fieldContainer}
+                            onChangeText={text => setRemark(text)}
+                        />
+                        <Text style={styles.placeholder}>{strings.notes}</Text>
+                        <CustomTextInput
+                            value={notes}
+                            placeholder={strings.notes}
+                            containerStyle={styles.fieldContainer}
+                            onChangeText={text => setNotes(text)}
+                        />
+                        <CustomButton
+                            title={strings.add}
+                            style={styles.addCategoryButton}
+                            onPress={onAddPress}
+                        />
+                    </View>
+                </KeyboardAwareScrollView>
             </CustomBackground>
             {fetching && <Loader />}
         </View>

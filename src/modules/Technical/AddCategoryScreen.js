@@ -5,6 +5,7 @@ import { CustomBackground, CustomButton, CustomHeader, CustomTextInput, Loader }
 import strings from '../../constants/Strings';
 import { useDispatch, useSelector } from 'react-redux';
 import CategoryTypes from '../../redux/CategoryRedux';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 const AddCategoryScreen = ({ navigation, route }) => {
@@ -14,12 +15,6 @@ const AddCategoryScreen = ({ navigation, route }) => {
     const title = route?.params?.categoryType == 1 ? 'Add Category' : 'Add Sub Category'
     const [categoryName, setCategoryName] = useState('')
     const { fetching } = useSelector(state => state.category);
-
-    useEffect(() => {
-        if (!fetching) {
-            setCategoryName('')
-        }
-    }, [fetching])
 
     const onBackPress = () => {
         navigation.goBack();
@@ -37,16 +32,17 @@ const AddCategoryScreen = ({ navigation, route }) => {
     return (
         <View style={styles.mainContainer}>
             <CustomHeader centerEnable={false} isTitle title={title} leftEnable onLeftPress={onBackPress} />
-            <CustomBackground>
+            <CustomBackground >
                 <View style={styles.innerContainer}>
-                    <Text style={styles.placeholder}>{route?.params?.categoryType == 1 ? strings.category : strings.subCategory}</Text>
-                    <CustomTextInput
-                        value={categoryName}
-                        placeholder={route?.params?.categoryType == 1 ? strings.category : strings.subCategory}
-                        keyboardType={'email-address'}
-                        containerStyle={styles.categoryContainer}
-                        onChangeText={text => setCategoryName(text)}
-                    />
+                    <KeyboardAwareScrollView>
+                        <Text style={styles.placeholder}>{route?.params?.categoryType == 1 ? strings.category : strings.subCategory}</Text>
+                        <CustomTextInput
+                            value={categoryName}
+                            placeholder={route?.params?.categoryType == 1 ? strings.category : strings.subCategory}
+                            containerStyle={styles.categoryContainer}
+                            onChangeText={text => setCategoryName(text)}
+                        />
+                    </KeyboardAwareScrollView>
                 </View>
                 <CustomButton
                     title={strings.add}
@@ -54,6 +50,7 @@ const AddCategoryScreen = ({ navigation, route }) => {
                     onPress={onAddPress}
                 />
             </CustomBackground>
+
             {fetching && <Loader />}
         </View>
     );

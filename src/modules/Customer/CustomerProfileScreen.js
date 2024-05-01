@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert, Text, View } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import strings from '../../constants/Strings';
 import styles from './styles/CustomerProfileScreenStyles';
@@ -9,6 +9,8 @@ import AuthTypes from '../../redux/AuthRedux';
 
 const CustomerProfileScreen = ({ navigation }) => {
     const dispatch = useDispatch();
+
+    const { user } = useSelector(state => state?.auth)
 
     const onLogoutPress = () => {
         Alert.alert(strings.thermonic, strings.logoutConfirmation, [
@@ -26,11 +28,10 @@ const CustomerProfileScreen = ({ navigation }) => {
             <CustomBackground>
                 <View style={[styles.container, styles.innerContainer]}>
                     <Text style={styles.title}>{`You are customer`}</Text>
-                    <ProfileField style={styles.field} placeholder={'Email'} title={'brijesh@yopmail.com'} />
-                    <ProfileField style={styles.field} placeholder={'Name'} title={'Brijesh Shiroya'} />
-                    <ProfileField style={styles.field} placeholder={'Company Name'} title={'Thermonic Sensor india private limited'} />
-                    <ProfileField style={styles.field} placeholder={'Contact'} title={'+91 9558050804'} />
-                    <ProfileField style={styles.field} placeholder={'Website'} title={'www.google.com'} />
+                    <ProfileField style={styles.field} placeholder={'Email'} title={user?.email} />
+                    <ProfileField style={styles.field} placeholder={'Name'} title={`${user?.first_name} ${user?.last_name}`} />
+                    <ProfileField style={styles.field} placeholder={'Company Name'} title={user?.company_name || 'Thermonic'} />
+                    <ProfileField style={styles.field} placeholder={'Contact'} title={user?.mobile_no} />
                 </View>
                 <CustomButton title={'Logout'} style={styles.logoutButton} onPress={onLogoutPress} />
             </CustomBackground>
