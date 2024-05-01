@@ -1,8 +1,9 @@
-import { call, put } from 'redux-saga/effects';
-import CategoryActions from '../redux/CategoryRedux';
 import { Alert } from 'react-native';
-import { getError } from '../services/Utils';
+import { call, put } from 'redux-saga/effects';
 import { Strings } from '../constants';
+import CategoryActions from '../redux/CategoryRedux';
+import { getError } from '../services/Utils';
+import { navigationRef } from '../modules/RootContainer';
 
 export function* getAllCategory(api) {
   const response = yield call(api.categoryList);
@@ -52,7 +53,6 @@ export function* removeSubCategory(api, action) {
     );
   } else {
     const error = yield call(getError, response?.data);
-    // Alert.alert(Strings.thermonic, error?.trim());
     yield put(CategoryActions.categoryListFailure(error));
   }
 }
@@ -65,9 +65,9 @@ export function* addCategory(api, action) {
       CategoryActions.categoryListSuccess(response?.data?.data),
     );
     Alert.alert(Strings.thermonic, Strings.categoryAddedSuccess);
+    yield call(navigationRef.goBack)
   } else {
     const error = yield call(getError, response?.data);
-    // Alert.alert(Strings.thermonic, error?.trim());
     yield put(CategoryActions.categoryListFailure(error));
   }
 }
@@ -79,9 +79,9 @@ export function* addSubCategory(api, action) {
       CategoryActions.subCategoryListSuccess(response?.data?.data),
     );
     Alert.alert(Strings.thermonic, Strings.subCategoryAddedSuccess);
+    yield call(navigationRef.goBack)
   } else {
     const error = yield call(getError, response?.data);
-    // Alert.alert(Strings.thermonic, error?.trim());
     yield put(CategoryActions.categoryListFailure(error));
   }
 }

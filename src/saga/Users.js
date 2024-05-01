@@ -4,6 +4,7 @@ import { Strings } from '../constants';
 import UsersActions from '../redux/UsersRedux';
 import { getError } from '../services/Utils';
 import { useNavigation } from '@react-navigation/native';
+import { navigationRef } from '../modules/RootContainer';
 
 
 export function* getUsers(api, action) {
@@ -25,7 +26,8 @@ export function* AddUser(api, action) {
     yield put(
       UsersActions.addUserSuccess(action?.userData?.role),
     );
-    Alert.alert(Strings.thermonic, Strings.customerAdded);
+    Alert.alert(Strings.thermonic, response?.data?.message);
+    yield call(navigationRef.goBack)
   } else {
     const error = yield call(getError, response?.data);
     Alert.alert(Strings.thermonic, error?.trim());
