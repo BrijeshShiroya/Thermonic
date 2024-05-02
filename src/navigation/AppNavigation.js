@@ -93,6 +93,7 @@ const CustomerTabBar = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+        tabBarStyle: { height: 60 },
         tabBarShowLabel: false,
         tabBarIcon: ({ focused }) => {
           const { icon } = iconStyle(route.name, focused);
@@ -110,6 +111,7 @@ const ManagerTabBar = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+        tabBarStyle: { height: 60 },
         tabBarShowLabel: false,
         tabBarIcon: ({ focused }) => {
           const { icon } = iconStyle(route.name, focused);
@@ -127,6 +129,7 @@ const TechnicalTabBar = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+        tabBarStyle: { height: 60 },
         tabBarShowLabel: false,
         tabBarIcon: ({ focused }) => {
           const { icon } = iconStyle(route.name, focused);
@@ -136,6 +139,24 @@ const TechnicalTabBar = () => {
       <Tab.Screen name="TechnicalHomeStack" component={TechnicalHomeStack} />
       <Tab.Screen name="ManageStack" component={ManageStack} />
       <Tab.Screen name="TechnicalProfileStack" component={TechnicalProfileScreen} />
+    </Tab.Navigator>
+  );
+};
+
+const ProductionTabBar = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarStyle: { height: 60 },
+        tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => {
+          const { icon } = iconStyle(route.name, focused);
+          return <Image source={icon} resizeMode={'contain'} />;
+        },
+      })}>
+      <Tab.Screen name="ProductionHomeStack" component={ProductionHomeStack} />
+      <Tab.Screen name="ProductionProfileStack" component={ProductionProfileScreen} />
     </Tab.Navigator>
   );
 };
@@ -160,24 +181,6 @@ const iconStyle = (screenName, focused) => {
     icon: iconName,
   };
 };
-
-const ProductionTabBar = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarIcon: ({ focused }) => {
-          const { icon } = iconStyle(route.name, focused);
-          return <Image source={icon} resizeMode={'contain'} />;
-        },
-      })}>
-      <Tab.Screen name="ProductionHomeStack" component={ProductionHomeStack} />
-      <Tab.Screen name="ProductionProfileStack" component={ProductionProfileScreen} />
-    </Tab.Navigator>
-  );
-};
-
 
 export const AuthContext = React.createContext(null);
 
