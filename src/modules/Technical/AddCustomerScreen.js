@@ -120,7 +120,10 @@ const AddCustomerScreen = ({ navigation, route }) => {
                     />
                     <Text style={styles.placeholder}>{strings.Address}</Text>
                     <CustomTextInput
+                        multiline
+                        style={styles.address}
                         value={customerAddress}
+                        numberOfLines={4}
                         placeholder={strings.Address}
                         containerStyle={styles.fieldContainer}
                         onChangeText={text => setCustomerAddress(text)}

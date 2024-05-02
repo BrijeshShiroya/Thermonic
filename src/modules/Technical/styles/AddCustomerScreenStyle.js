@@ -31,6 +31,13 @@ const styles = StyleSheet.create({
     addCategoryButton: {
         marginTop: verticalScale(20),
         marginBottom: verticalScale(50)
+    },
+    address: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        textAlignVertical: 'top',
+        height: 120,
+        alignSelf: 'flex-start'
     }
 
 });
