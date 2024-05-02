@@ -1,14 +1,22 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Colors } from '../theme';
-import styles from './styles/CustomerOrderStyle';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Status from './Status';
+import styles from './styles/CustomerOrderStyle';
+import { Colors } from '../theme';
+import icons from '../assets';
 
-const CustomerOrder = ({ item }) => {
+const CustomerOrder = ({ item, isOptional = false, onOptionPress }) => {
     return (
         <View style={styles.container}>
             <View style={styles.innerContainer}>
-                <Text style={styles.title}>{item?.id}</Text>
+                <View style={styles.footerContainer}>
+                    <Text style={styles.title}>{item?.id}</Text>
+                    {isOptional && <TouchableOpacity onPress={onOptionPress}>
+                        <Image style={styles.bin} tintColor={Colors.darkBlue} source={icons.options} />
+                    </TouchableOpacity>}
+                </View>
+
                 <Text style={styles.productName}>{item?.product_name}</Text>
                 <View style={styles.footerContainer}>
                     <Text style={styles.qty}>{`Quantity: ${item?.quantity}`}</Text>
@@ -20,5 +28,13 @@ const CustomerOrder = ({ item }) => {
         </View>
     );
 };
+
+
+CustomerOrder.propTypes = {
+    item: PropTypes.object,
+    isOptional: PropTypes.bool,
+    onOptionPress: PropTypes.func
+};
+
 
 export default CustomerOrder;
