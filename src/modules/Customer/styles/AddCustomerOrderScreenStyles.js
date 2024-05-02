@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.type.semiBold,
         color: Colors.themeBlue,
         fontSize: Fonts.size.regular,
-        marginTop: 5
+        marginTop: 10,
+        marginBottom: 20
     },
     subCategoryTitle: {
         marginTop: 10,
@@ -59,6 +60,14 @@ const styles = StyleSheet.create({
     fieldContainer: {
         marginBottom: 10
     },
+    multiline: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        textAlignVertical: 'top',
+        height: 120,
+        alignSelf: 'flex-start'
+    }
 });
+
 
 export default styles;

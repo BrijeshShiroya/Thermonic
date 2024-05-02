@@ -97,6 +97,8 @@ const AddCustomerOrderScreen = ({ navigation }) => {
                         <Text style={styles.placeholder}>{strings.remark}</Text>
                         <CustomTextInput
                             value={remark}
+                            numberOfLines={4}
+                            style={styles.multiline}
                             placeholder={strings.remark}
                             containerStyle={styles.fieldContainer}
                             onChangeText={text => setRemark(text)}
@@ -104,6 +106,8 @@ const AddCustomerOrderScreen = ({ navigation }) => {
                         <Text style={styles.placeholder}>{strings.notes}</Text>
                         <CustomTextInput
                             value={notes}
+                            numberOfLines={4}
+                            style={styles.multiline}
                             placeholder={strings.notes}
                             containerStyle={styles.fieldContainer}
                             onChangeText={text => setNotes(text)}
