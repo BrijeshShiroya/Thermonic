@@ -39,7 +39,11 @@ export const UserType = {
 }
 
 export const OrderStatus = {
-  pending: 'pending'
+  pending: 'pending',
+  accepted: 'accepted',
+  processing: 'processing',
+  dispatch: 'dispatch',
+  completed: 'completed'
 }
 
 export const CustomerOrderStatus = {

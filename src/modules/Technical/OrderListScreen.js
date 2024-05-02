@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import styles from './styles/OrderListScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader, CustomerOrder } from '../../components';
 import strings from '../../constants/Strings';
-import { CustomerOrderStatus } from '../../services/Utils';
+import { CustomerOrderStatus, OrderStatus } from '../../services/Utils';
+import { useDispatch, useSelector } from 'react-redux';
+import OrderTypes from '../../redux/OrderRedux';
 
 const DATA = [
     {
@@ -73,16 +75,26 @@ const DATA = [
 
 const OrderListScreen = ({ navigation, route }) => {
 
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state?.auth)
+    const { order, fetching } = useSelector(state => state?.order)
+
+    useEffect(() => {
+        dispatch(OrderTypes.orderRequest(user.id, route?.params?.type))
+    }, [])
+
     const getType = () => {
         const type = route?.params?.type
-        if (type == 1) {
+        if (type == OrderStatus.accepted) {
             return "Accepted"
-        } else if (type == 2) {
+        } else if (OrderStatus.pending) {
             return "Pending"
-        } else if (type == 3) {
+        } else if (OrderStatus.processing) {
             return "In Progress"
+        } else if (OrderStatus.dispatch) {
+            return "Dispatch"
         } else
-            return "Dispatched"
+            return "Completed"
     }
 
     const onBackPress = () => {
@@ -95,13 +107,13 @@ const OrderListScreen = ({ navigation, route }) => {
             <CustomHeader leftEnable centerEnable={false} onLeftPress={onBackPress} isTitle title={getType()} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    {/* <FlatList
+                    <FlatList
                         contentContainerStyle={styles.orderList}
                         showsVerticalScrollIndicator={false}
-                        data={DATA}
+                        data={order}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <CustomerOrder item={item} />}
-                    /> */}
+                    />
                 </View>
             </CustomBackground>
         </View>

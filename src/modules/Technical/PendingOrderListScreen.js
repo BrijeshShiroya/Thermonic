@@ -1,107 +1,37 @@
-import React from 'react';
-import { FlatList, Text, View } from 'react-native';
-import styles from './styles/PendingOrderListScreenStyles';
-import { CustomBackground, CustomButton, CustomHeader, CustomerOrder } from '../../components';
+import React, { useEffect } from 'react';
+import { FlatList, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { CustomBackground, CustomHeader, CustomerOrder } from '../../components';
 import strings from '../../constants/Strings';
-import { CustomerOrderStatus } from '../../services/Utils';
-
-const DATA = [
-    {
-        id: 'TI3042406',
-        productName: 'PT100 Head 6mmx200mm 1/2 BSP fix',
-        qty: 6,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042408',
-        productName: 'Thread in PT100 6mmx100mm 1/2 NPT fix',
-        qty: 20,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042410',
-        productName: 'Thread in PT100 6mmx100mm 1/2 NPT fix',
-        qty: 40,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042411',
-        productName: 'PT100 Head 6mmx200mm 1/2 BSP fix',
-        qty: 6,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042412',
-        productName: 'Thread in PT100 6mmx100mm 1/2 NPT fix',
-        qty: 20,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042413',
-        productName: 'Thread in PT100 6mmx100mm 1/2 NPT fix',
-        qty: 40,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042414',
-        productName: 'PT100 Head 6mmx200mm 1/2 BSP fix',
-        qty: 6,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042415',
-        productName: 'Thread in PT100 6mmx100mm 1/2 NPT fix',
-        qty: 20,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-    {
-        id: 'TI3042416',
-        productName: 'Thread in PT100 6mmx100mm 1/2 NPT fix',
-        qty: 40,
-        status: CustomerOrderStatus.accepted,
-        other: 'Please complete my order on urgent basis'
-    },
-];
+import OrderTypes from '../../redux/OrderRedux';
+import { OrderStatus } from '../../services/Utils';
+import styles from './styles/PendingOrderListScreenStyles';
 
 const PendingOrderListScreen = ({ navigation, route }) => {
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state?.auth)
+    const { order, fetching } = useSelector(state => state?.order)
 
-    const getType = () => {
-        const type = route?.params?.type
-        if (type == 1) {
-            return "Accepted"
-        } else if (type == 2) {
-            return "Pending"
-        } else if (type == 3) {
-            return "In Progress"
-        } else
-            return "Dispatched"
-    }
+    useEffect(() => {
+        dispatch(OrderTypes.orderRequest(user.id, OrderStatus.pending))
+    }, [])
 
     const onBackPress = () => {
         navigation.goBack()
     }
-
 
     return (
         <View style={styles.mainContainer}>
             <CustomHeader leftEnable centerEnable={false} onLeftPress={onBackPress} isTitle title={strings.pendingOrders} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
-                    {/* <FlatList
+                    <FlatList
                         contentContainerStyle={styles.orderList}
-                        showsVerticalScrollIndicator={falske}
-                        data={DATA}
+                        showsVerticalScrollIndicator={false}
+                        data={order}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <CustomerOrder item={item} />}
-                    /> */}
+                    />
                 </View>
             </CustomBackground>
         </View>
