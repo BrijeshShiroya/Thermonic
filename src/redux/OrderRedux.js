@@ -3,11 +3,11 @@ import Immutable from 'seamless-immutable';
 
 /* ------------- Types and Action Creators ------------- */
 const { Types, Creators } = createActions({
-  orderRequest: ['id', 'status'],
+  orderRequest: ['orderRequestData', 'fetchBy'],
   orderSuccess: ['data'],
   orderFailure: ['error'],
   addOrderRequest: ['orderData'],
-  addOrderSuccess: ['id', 'status']
+  addOrderSuccess: ['orderRequestData', 'fetchBy']
 });
 
 export const OrderTypes = Types;

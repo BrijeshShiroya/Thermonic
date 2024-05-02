@@ -2,13 +2,12 @@ import { Alert } from 'react-native';
 import { call, put } from 'redux-saga/effects';
 import { Strings } from '../constants';
 import OrderActions from '../redux/OrderRedux';
-import { OrderStatus, getError } from '../services/Utils';
+import { OrderStatus, UserType, getError } from '../services/Utils';
+import { navigationRef } from '../modules/RootContainer';
 
 export function* getOrderList(api, action) {
-  const response = yield call(api.orderList, {
-    client_id: action?.id,
-    status: action?.status
-  });
+  const apiDetail = action?.fetchBy == UserType.client ? api.orderList : api.orderListOwner
+  const response = yield call(apiDetail, action?.orderRequestData);
   if (response?.data?.status && !response?.data?.error) {
     yield put(
       OrderActions.orderSuccess(response?.data?.data || null),
@@ -20,12 +19,14 @@ export function* getOrderList(api, action) {
   }
 }
 
+
 export function* addOrder(api, action) {
   const response = yield call(api.addOrder, action?.orderData);
   if (response?.data?.status && !response?.data?.error) {
     yield put(
-      OrderActions.addOrderSuccess(action?.orderData?.client_id, OrderStatus.pending),
+      OrderActions.addOrderSuccess({ client_id: action?.orderData?.client_id, status: OrderStatus.pending }, UserType.client),
     );
+    yield call(navigationRef.goBack)
   } else {
     const error = yield call(getError, response?.data);
     Alert.alert(Strings.thermonic, error?.trim());

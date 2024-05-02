@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import styles from './styles/OrderListScreenStyles';
-import { CustomBackground, CustomButton, CustomHeader, CustomerOrder } from '../../components';
+import { CustomBackground, CustomButton, CustomHeader, CustomerOrder, Loader } from '../../components';
 import strings from '../../constants/Strings';
-import { CustomerOrderStatus, OrderStatus } from '../../services/Utils';
+import { CustomerOrderStatus, OrderStatus, UserType } from '../../services/Utils';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderTypes from '../../redux/OrderRedux';
 
@@ -80,7 +80,7 @@ const OrderListScreen = ({ navigation, route }) => {
     const { order, fetching } = useSelector(state => state?.order)
 
     useEffect(() => {
-        dispatch(OrderTypes.orderRequest(user.id, route?.params?.type))
+        dispatch(OrderTypes.orderRequest({ owner_id: user.id, status: route?.params?.type }, UserType.owner))
     }, [])
 
     const getType = () => {
@@ -95,6 +95,10 @@ const OrderListScreen = ({ navigation, route }) => {
             return "Dispatch"
         } else
             return "Completed"
+    }
+
+    const onRefresh = () => {
+        dispatch(OrderTypes.orderRequest({ owner_id: user.id, status: route?.params?.type }, UserType.owner))
     }
 
     const onBackPress = () => {
@@ -113,9 +117,12 @@ const OrderListScreen = ({ navigation, route }) => {
                         data={order}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <CustomerOrder item={item} />}
+                        onRefresh={onRefresh}
+                        refreshing={fetching}
                     />
                 </View>
             </CustomBackground>
+            {fetching && <Loader />}
         </View>
     );
 };

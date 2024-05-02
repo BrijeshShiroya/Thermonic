@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { FlatList, View } from 'react-native';
 import styles from './styles/CustomerHomeScreenStyles';
 import { CustomBackground, CustomHeader, CustomSearchbar, CustomerOrder, Loader } from '../../components';
-import { CustomerOrderStatus, OrderStatus } from '../../services/Utils';
+import { CustomerOrderStatus, OrderStatus, UserType } from '../../services/Utils';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderTypes from '../../redux/OrderRedux';
 
@@ -14,7 +14,7 @@ const CustomerHomeScreen = ({ navigation }) => {
     const { order, fetching } = useSelector(state => state?.order)
 
     useEffect(() => {
-        dispatch(OrderTypes.orderRequest(user.id, OrderStatus.pending))
+        dispatch(OrderTypes.orderRequest({ client_id: user.id, status: OrderStatus.pending }, UserType.client))
     }, [])
 
     const onAddOrderPress = () => {
@@ -22,7 +22,7 @@ const CustomerHomeScreen = ({ navigation }) => {
     }
 
     const onRefresh = () => {
-        dispatch(OrderTypes.orderRequest(user.id, OrderStatus.pending))
+        dispatch(OrderTypes.orderRequest({ client_id: user.id, status: OrderStatus.pending }, UserType.client))
     }
 
     return (
