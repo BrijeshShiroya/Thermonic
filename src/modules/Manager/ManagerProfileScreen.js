@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert, Text, View } from 'react-native';
-import styles from './styles/ManagerHomeScreenStyles';
+import styles from './styles/ManagerProfileScreenStyles';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import strings from '../../constants/Strings';
