@@ -26,5 +26,4 @@ OptionsActionSheet.propTypes = {
     onBeforeShow: PropTypes.func,
 };
 
-
 export default OptionsActionSheet;

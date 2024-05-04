@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
-import { FlatList, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { CustomBackground, CustomHeader, DropdownListItem, Loader } from '../../components';
+import { CustomBackground, CustomHeader, DropdownListItem, Loader, UserInfo } from '../../components';
 import UsersTypes from '../../redux/UsersRedux';
 import styles from './styles/CustomerListScreenStyles';
 import { UserType } from '../../services/Utils';
+import ActionSheet, { SheetManager } from 'react-native-actions-sheet';
 
 
 const CustomerListScreen = ({ navigation, route }) => {
     const dispatch = useDispatch();
+    const [selectedUser, setSelectedUser] = useState()
 
     const type = route?.params?.type
 
@@ -41,7 +43,8 @@ const CustomerListScreen = ({ navigation, route }) => {
     }
 
     const onDelete = (item) => {
-
+        setSelectedUser(item)
+        SheetManager.show('user-info')
     }
 
     return (
@@ -52,9 +55,14 @@ const CustomerListScreen = ({ navigation, route }) => {
                     <FlatList
                         data={users}
                         showsVerticalScrollIndicator={false}
-                        renderItem={({ item }) => <DropdownListItem title={item?.company_name} />} />
+                        renderItem={({ item }) => <DropdownListItem title={item?.company_name} onPress={() => onDelete(item)} />} />
                 </View>
             </CustomBackground>
+            <ActionSheet id={'user-info'}>
+                <View>
+                    <UserInfo info={selectedUser} />
+                </View>
+            </ActionSheet>
             {fetching && <Loader />}
         </View>
     );

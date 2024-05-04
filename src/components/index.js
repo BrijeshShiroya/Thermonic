@@ -11,6 +11,7 @@ import DropdownListItem from './DropdownListItem'
 import CustomDropdown from './CustomDropdown'
 import AddSubCategoryField from './AddSubCategoryField';
 import OptionsActionSheet from './OptionsActionSheet';
+import UserInfo from './UserInfo';
 
 export {
     CustomTextInput,
@@ -25,5 +26,6 @@ export {
     DropdownListItem,
     CustomDropdown,
     AddSubCategoryField,
-    OptionsActionSheet
+    OptionsActionSheet,
+    UserInfo
 }

@@ -41,6 +41,7 @@ export function* acceptOrder(api, action) {
     yield put(
       OrderActions.addOrderSuccess({ owner_id: action?.orderData?.accepted_by, status: OrderStatus.pending }, UserType.manager),
     );
+    Alert.alert(Strings.thermonic, response?.data?.message);
     yield call(navigationRef.goBack)
   } else {
     const error = yield call(getError, response?.data);
