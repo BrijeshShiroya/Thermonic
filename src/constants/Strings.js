@@ -36,7 +36,7 @@ const strings = {
   clearAll: 'CLEAR ALL',
   subCategories: `Product's sub categories`,
   addSubCategories: `Add your product's sub categories`,
-  acceptOrder: 'Accept Order',
+  acceptOrder: 'Accept New Order',
   viewAllOrder: 'View All Order',
   pending: 'Pending Orders',
   inProgress: 'In Progress Orders',

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { CustomBackground, CustomHeader, CustomerOrder, Loader, OptionsActionSheet } from '../../components';
+import { CustomBackground, CustomHeader, CustomerOrder, OptionsActionSheet } from '../../components';
 import strings from '../../constants/Strings';
 import OrderTypes from '../../redux/OrderRedux';
 import { OrderStatus, UserType } from '../../services/Utils';
@@ -33,7 +33,13 @@ const PendingOrderListScreen = ({ navigation, route }) => {
 
     const onOptionPress = (item) => {
         if (item == 'Accept Order') {
-            alert(JSON.stringify(selected))
+            dispatch(OrderTypes.acceptOrderRequest({
+                order_id: selected?.id,
+                accepted_by: user.id,
+                quantity: selected?.quantity,
+                price: selected?.price,
+                owner_remark: "NA"
+            }))
             SheetManager.hide('orderOption')
             setSelected()
         } else {
@@ -63,7 +69,6 @@ const PendingOrderListScreen = ({ navigation, route }) => {
                 </View>
                 <OptionsActionSheet id={'orderOption'} options={['Accept Order', 'Cancel']} onBeforeShow={onBeforeShow} onOptionPress={(item) => onOptionPress(item)} />
             </CustomBackground>
-            {fetching && <Loader />}
         </View>
     );
 };

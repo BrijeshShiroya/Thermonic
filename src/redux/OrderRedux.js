@@ -7,7 +7,9 @@ const { Types, Creators } = createActions({
   orderSuccess: ['data'],
   orderFailure: ['error'],
   addOrderRequest: ['orderData'],
-  addOrderSuccess: ['orderRequestData', 'fetchBy']
+  addOrderSuccess: ['orderRequestData', 'fetchBy'],
+  acceptOrderRequest: ['orderData'],
+  acceptOrderSuccess: ['orderRequestData', 'fetchBy'],
 });
 
 export const OrderTypes = Types;
@@ -60,4 +62,6 @@ export const orderReducer = createReducer(INITIAL_STATE, {
   [Types.ORDER_FAILURE]: failure,
   [Types.ADD_ORDER_REQUEST]: request,
   [Types.ADD_ORDER_SUCCESS]: orderSuccess,
+  [Types.ACCEPT_ORDER_REQUEST]: request,
+  [Types.ACCEPT_ORDER_SUCCESS]: orderSuccess,
 });

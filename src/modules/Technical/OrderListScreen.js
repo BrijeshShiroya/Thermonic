@@ -87,11 +87,11 @@ const OrderListScreen = ({ navigation, route }) => {
         const type = route?.params?.type
         if (type == OrderStatus.accepted) {
             return "Accepted"
-        } else if (OrderStatus.pending) {
+        } else if (type == OrderStatus.pending) {
             return "Pending"
-        } else if (OrderStatus.processing) {
+        } else if (type == OrderStatus.processing) {
             return "In Progress"
-        } else if (OrderStatus.dispatch) {
+        } else if (type == OrderStatus.dispatch) {
             return "Dispatch"
         } else
             return "Completed"
@@ -122,7 +122,6 @@ const OrderListScreen = ({ navigation, route }) => {
                     />
                 </View>
             </CustomBackground>
-            {fetching && <Loader />}
         </View>
     );
 };

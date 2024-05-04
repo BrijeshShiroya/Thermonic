@@ -42,7 +42,6 @@ const CustomerHomeScreen = ({ navigation }) => {
                     />
                 </View>
             </CustomBackground>
-            {fetching && <Loader />}
         </View>
     );
 };

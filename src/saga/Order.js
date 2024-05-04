@@ -33,3 +33,18 @@ export function* addOrder(api, action) {
     yield put(OrderActions.orderFailure(error));
   }
 }
+
+
+export function* acceptOrder(api, action) {
+  const response = yield call(api.acceptOrder, action?.orderData);
+  if (response?.data?.status && !response?.data?.error) {
+    yield put(
+      OrderActions.addOrderSuccess({ owner_id: action?.orderData?.accepted_by, status: OrderStatus.pending }, UserType.manager),
+    );
+    yield call(navigationRef.goBack)
+  } else {
+    const error = yield call(getError, response?.data);
+    Alert.alert(Strings.thermonic, error?.trim());
+    yield put(OrderActions.orderFailure(error));
+  }
+}

@@ -19,7 +19,7 @@ const AllOrderScreen = ({ navigation }) => {
                     <CustomButton style={styles.button} title={strings.accepted} onPress={() => navigation.navigate("OrderListScreen", { type: OrderStatus.accepted })} />
                     <CustomButton style={styles.button} title={strings.pending} onPress={() => navigation.navigate("OrderListScreen", { type: OrderStatus.pending })} />
                     <CustomButton style={styles.button} title={strings.inProgress} onPress={() => navigation.navigate("OrderListScreen", { type: OrderStatus.processing })} />
-                    <CustomButton style={styles.button} title={strings.dispatched} onPress={() => navigation.navigate("OrderListScreen", { type: OrderStatus.dispatched })} />
+                    <CustomButton style={styles.button} title={strings.dispatched} onPress={() => navigation.navigate("OrderListScreen", { type: OrderStatus.dispatch })} />
                 </View>
             </CustomBackground>
         </View>
