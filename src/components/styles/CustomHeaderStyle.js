@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
     },
     centerIcon: {
-        height: 29,
-        width: 117,
+        height: 40,
+        width: 40,
     },
     centerTextStyle: {
         fontSize: Fonts.size.tiny,

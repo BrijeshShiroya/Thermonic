@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
     color: Colors.textDark,
     fontSize: Fonts.size.medium,
     alignSelf: 'flex-start',
+  },
+  logo: {
+    alignSelf: 'center',
+    marginBottom: 20,
+    height: 200,
+    width: 200
   }
 });
 

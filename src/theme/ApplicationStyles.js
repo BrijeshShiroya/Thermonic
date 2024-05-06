@@ -7,7 +7,7 @@ const ApplicationStyles = {
   screen: {
     mainContainer: {
       flex: 1,
-      backgroundColor: Colors.lightWhite,
+      backgroundColor: Colors.white,
     },
   },
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   Alert,
+  Image,
   Keyboard,
   ScrollView,
   Text,
@@ -17,6 +18,7 @@ import styles from './styles/LoginScreenStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import AuthTypes from '../../redux/AuthRedux';
 import { UserType } from '../../services/Utils'
+import icons from '../../assets';
 
 
 const LoginScreen = ({ navigation }) => {
@@ -45,28 +47,31 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.mainContainer}>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <Text style={styles.placeholder}>{strings.email}</Text>
-          <CustomTextInput
-            value={email}
-            placeholder={strings.email}
-            keyboardType={'email-address'}
-            containerStyle={styles.emailContainer}
-            onChangeText={text => setEmail(text)}
-          />
-          <Text style={styles.placeholder}>{strings.password}</Text>
-          <CustomTextInput
-            secureTextEntry={secureTextEntry}
-            value={password}
-            placeholder={strings.password}
-            containerStyle={styles.passwordContainer}
-            onChangeText={text => setPassword(text)}
-            onLeftPress={() => setSecureTextEntry(!secureTextEntry)}
-          />
-          <CustomButton
-            title={strings.loginButton}
-            style={styles.loginButton}
-            onPress={onLoginPress}
-          />
+          <View>
+            <Image style={styles.logo} source={icons.logo} />
+            <Text style={styles.placeholder}>{strings.email}</Text>
+            <CustomTextInput
+              value={email}
+              placeholder={strings.email}
+              keyboardType={'email-address'}
+              containerStyle={styles.emailContainer}
+              onChangeText={text => setEmail(text)}
+            />
+            <Text style={styles.placeholder}>{strings.password}</Text>
+            <CustomTextInput
+              secureTextEntry={secureTextEntry}
+              value={password}
+              placeholder={strings.password}
+              containerStyle={styles.passwordContainer}
+              onChangeText={text => setPassword(text)}
+              onLeftPress={() => setSecureTextEntry(!secureTextEntry)}
+            />
+            <CustomButton
+              title={strings.loginButton}
+              style={styles.loginButton}
+              onPress={onLoginPress}
+            />
+          </View>
         </ScrollView>
       </View>
       {fetching && <Loader />}

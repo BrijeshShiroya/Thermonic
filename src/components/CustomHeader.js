@@ -34,9 +34,9 @@ const CustomHeader = ({
                 </TouchableOpacity> : <View style={styles.content} />}
             {centerEnable ? <View style={styles.centerContainer}>
                 <Image source={icons.logo} style={styles.centerIcon} resizeMode='contain' />
-                <Text style={styles.centerTextStyle}>
+                {/* <Text style={styles.centerTextStyle}>
                     {strings.thermonic}
-                </Text>
+                </Text> */}
             </View> : <View />}
             {rightEnable ? <TouchableOpacity style={styles.rightContainer} onPress={onRightPress}>
                 <Image source={icons.add} resizeMode='contain' />
