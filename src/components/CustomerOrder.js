@@ -5,6 +5,7 @@ import Status from './Status';
 import styles from './styles/CustomerOrderStyle';
 import { Colors } from '../theme';
 import icons from '../assets';
+import moment from 'moment';
 
 const CustomerOrder = ({ item, isOptional = false, onOptionPress }) => {
     return (
@@ -24,6 +25,7 @@ const CustomerOrder = ({ item, isOptional = false, onOptionPress }) => {
                 </View>
                 <Text style={styles.other}>{`${item?.client_remark}`}</Text>
                 <Text style={styles.other}>{`${item?.client_notes}`}</Text>
+                {/* <Text style={styles.other}>{`${moment(item?.created_date).format('DD/MM/YYYY HH:mm')}`}</Text> */}
             </View>
         </View>
     );
