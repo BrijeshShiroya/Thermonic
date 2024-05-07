@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { CustomBackground, CustomHeader, DropdownListItem, Loader } from '../../components';
+import { CustomBackground, CustomHeader, DropdownListItem, Loader, UserInfo } from '../../components';
 import UsersTypes from '../../redux/UsersRedux';
-import { UserType } from '../../services/Utils';
 import styles from '../Technical/styles/CustomerListScreenStyles';
+import { UserType } from '../../services/Utils';
 
 
-const WorkerListScreen = ({ navigation, route }) => {
+const DispatcherListScreen = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const [selectedUser, setSelectedUser] = useState()
 
@@ -16,7 +16,7 @@ const WorkerListScreen = ({ navigation, route }) => {
     const { users, fetching } = useSelector(state => state.users)
 
     useEffect(() => {
-        dispatch(UsersTypes.usersListRequest(UserType.worker))
+        dispatch(UsersTypes.usersListRequest(UserType.dispatch))
     }, [])
 
     const onBackPress = () => {
@@ -31,7 +31,7 @@ const WorkerListScreen = ({ navigation, route }) => {
 
     return (
         <View style={styles.mainContainer}>
-            <CustomHeader leftEnable onLeftPress={onBackPress} centerEnable={false} isTitle title={'Select worker'} />
+            <CustomHeader leftEnable onLeftPress={onBackPress} centerEnable={false} isTitle title={'Select Dispatcher'} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
                     <FlatList
@@ -45,4 +45,4 @@ const WorkerListScreen = ({ navigation, route }) => {
     );
 };
 
-export default WorkerListScreen;
+export default DispatcherListScreen;

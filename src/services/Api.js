@@ -49,13 +49,15 @@ const order = () => {
   const addOrder = (orderData) => api.post('add_order', toFormData(orderData))
   const acceptOrder = (orderData) => api.post('accept_order', toFormData(orderData))
   const assignOrderToWorker = (orderData) => api.post('assign_order_to_worker', toFormData(orderData))
+  const assignOrderToDispatch = (orderData) => api.post('assign_order_to_disptch', toFormData(orderData))
   return {
     orderList,
     orderListOwner,
     orderListWorker,
     addOrder,
     acceptOrder,
-    assignOrderToWorker
+    assignOrderToWorker,
+    assignOrderToDispatch
   }
 }
 
