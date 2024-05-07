@@ -6,7 +6,7 @@ import { OrderTypes } from '../redux/OrderRedux';
 import API from '../services/Api';
 import { login, logout } from './Auth';
 import { getAllCategory, getAllSubCategory, removeCategory, removeSubCategory, addCategory, addSubCategory } from './Category';
-import { getOrderList, addOrder, acceptOrder } from './Order';
+import { getOrderList, addOrder, acceptOrder, getWorkerOrderList } from './Order';
 
 import { getUsers, AddUser } from './Users';
 import { UsersTypes } from '../redux/UsersRedux';
@@ -33,6 +33,7 @@ export default function* rootSaga() {
     takeLatest(UsersTypes.ADD_USER_SUCCESS, getUsers, usersApi),
     takeLatest(AuthTypes.LOGOUT_REQUEST, logout, authApi),
     takeLatest(OrderTypes.ORDER_REQUEST, getOrderList, orderApi),
+    takeLatest(OrderTypes.WORKER_ORDER_REQUEST, getWorkerOrderList, orderApi),
     takeLatest(OrderTypes.ADD_ORDER_REQUEST, addOrder, orderApi),
     takeLatest(OrderTypes.ADD_ORDER_SUCCESS, getOrderList, orderApi),
     takeLatest(OrderTypes.ACCEPT_ORDER_REQUEST, acceptOrder, orderApi),

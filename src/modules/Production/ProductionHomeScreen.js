@@ -1,16 +1,43 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { FlatList, Text, View } from 'react-native';
 import styles from './styles/ProductionHomeScreenStyles';
-import { CustomHeader, CustomBackground, CustomSearchbar } from '../../components';
+import { CustomHeader, CustomBackground, CustomSearchbar, CustomerOrder } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
+import OrderTypes from '../../redux/OrderRedux';
 
 const ProductionHomeScreen = ({ navigation }) => {
+
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state?.auth)
+    const { order, fetching } = useSelector(state => state?.order)
+
+    useEffect(() => {
+        dispatch(OrderTypes.workerOrderRequest({ worker_id: user.id }))
+    }, [])
+
+    const onAddOrderPress = () => {
+        navigation.navigate('AddCustomerOrderScreen')
+    }
+
+    const onRefresh = () => {
+        dispatch(OrderTypes.workerOrderRequest({ worker_id: user.id }))
+    }
+
     return (
         <View style={styles.mainContainer}>
-            <CustomHeader />
+            <CustomHeader rightEnable onRightPress={onAddOrderPress} />
             <CustomBackground>
                 <View style={styles.innerContainer}>
                     <CustomSearchbar />
-                    <Text>Production Home2</Text>
+                    <FlatList
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={styles.orderList}
+                        data={order}
+                        keyExtractor={item => item.id}
+                        renderItem={({ item }) => <CustomerOrder item={item} />}
+                        onRefresh={onRefresh}
+                        refreshing={fetching}
+                    />
                 </View>
             </CustomBackground>
         </View>

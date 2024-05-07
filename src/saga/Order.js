@@ -49,3 +49,16 @@ export function* acceptOrder(api, action) {
     yield put(OrderActions.orderFailure(error));
   }
 }
+
+export function* getWorkerOrderList(api, action) {
+  const response = yield call(api.orderListWorker, action?.workerOrderRequestData);
+  if (response?.data?.status && !response?.data?.error) {
+    yield put(
+      OrderActions.orderSuccess(response?.data?.data || null),
+    );
+  } else {
+    const error = yield call(getError, response?.data);
+    Alert.alert(Strings.thermonic, error?.trim());
+    yield put(OrderActions.orderFailure(error));
+  }
+}

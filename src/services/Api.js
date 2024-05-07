@@ -45,11 +45,13 @@ const order = () => {
   api.addAsyncRequestTransform(requestTransform);
   const orderList = (data) => api.post('order_list_client', toFormData(data))
   const orderListOwner = (data) => api.post('order_list_owner', toFormData(data))
+  const orderListWorker = (data) => api.post('order_list_worker', toFormData(data))
   const addOrder = (orderData) => api.post('add_order', toFormData(orderData))
   const acceptOrder = (orderData) => api.post('accept_order', toFormData(orderData))
   return {
     orderList,
     orderListOwner,
+    orderListWorker,
     addOrder,
     acceptOrder
   }

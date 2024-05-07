@@ -3,7 +3,7 @@ import { Alert, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { CustomBackground, CustomButton, CustomHeader, ProfileField } from '../../components';
 import strings from '../../constants/Strings';
-import styles from './styles/ProductionHomeScreenStyles';
+import styles from './styles/ProductionProfileScreenStyles';
 import AuthTypes from '../../redux/AuthRedux';
 
 

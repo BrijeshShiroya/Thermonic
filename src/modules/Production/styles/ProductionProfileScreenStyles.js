@@ -1,15 +1,32 @@
 import { StyleSheet } from 'react-native';
 import {
     ApplicationStyles,
+    Fonts,
     verticalScale
 } from '../../../theme';
 
 const styles = StyleSheet.create({
     ...ApplicationStyles.screen,
     container: {
-        flex: 1,
-        paddingTop: verticalScale(8),
+        paddingTop: verticalScale(20),
         paddingHorizontal: verticalScale(16),
+        justifyContent: 'center'
+    },
+    innerContainer: {
+        flex: 1,
+    },
+    field: {
+        marginBottom: verticalScale(10)
+    },
+    logoutButton: {
+        marginVertical: verticalScale(30),
+        marginHorizontal: verticalScale(16),
+    },
+    title: {
+        fontFamily: Fonts.type.semiBold,
+        fontSize: Fonts.size.h6,
+        alignSelf: "center",
+        marginBottom: 20
     }
 });
 
