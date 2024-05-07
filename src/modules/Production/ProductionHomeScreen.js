@@ -15,9 +15,6 @@ const ProductionHomeScreen = ({ navigation }) => {
         dispatch(OrderTypes.workerOrderRequest({ worker_id: user.id }))
     }, [])
 
-    const onAddOrderPress = () => {
-        navigation.navigate('AddCustomerOrderScreen')
-    }
 
     const onRefresh = () => {
         dispatch(OrderTypes.workerOrderRequest({ worker_id: user.id }))
@@ -25,7 +22,7 @@ const ProductionHomeScreen = ({ navigation }) => {
 
     return (
         <View style={styles.mainContainer}>
-            <CustomHeader rightEnable onRightPress={onAddOrderPress} />
+            <CustomHeader />
             <CustomBackground>
                 <View style={styles.innerContainer}>
                     <CustomSearchbar />
