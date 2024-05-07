@@ -30,6 +30,7 @@ import AddWorkerScreen from '../modules/Technical/AddWorkerScreen';
 import AddDispatcherScreen from '../modules/Technical/AddDispatcherScreen';
 import OrderListScreen from '../modules/Technical/OrderListScreen';
 import PendingOrderListScreen from '../modules/Technical/PendingOrderListScreen'
+import WorkerListScreen from '../modules/Manager/WorkerListScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -47,6 +48,7 @@ const ManagerHomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ManagerHomeScreen" component={ManagerHomeScreen} />
+      <Stack.Screen name="WorkerListScreen" component={WorkerListScreen} />
     </Stack.Navigator>
   );
 };

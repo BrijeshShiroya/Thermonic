@@ -28,6 +28,7 @@ const strings = {
   invalidPassword: 'Please enter password',
   passwordInvalid: 'Please enter Password',
   cancel: 'Cancel',
+  yes: 'Yes',
   logout: 'Logout',
   logoutConfirmation: 'Are you sure you want to logout?',
   clear: 'Clear',
